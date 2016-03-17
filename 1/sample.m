@@ -1,0 +1,10 @@
+a=4+3i
+b=5+2i
+a+b;a-b;a*b;a/b;
+real(a)
+imag(b)
+conj(a)
+abs(a)
+angle(a)
+c=5*(cos(0.6435)+i*sin(0.6435))
+d=5*exp(i*0.6435)

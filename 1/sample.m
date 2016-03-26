@@ -1,6 +1,9 @@
 a=4+3i
 b=5+2i
-a+b;a-b;a*b;a/b;
+a+b;
+a-b;
+a*b;
+a/b;
 real(a)
 imag(b)
 conj(a)

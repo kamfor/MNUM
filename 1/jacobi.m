@@ -1,0 +1,1 @@
+%Rowziązywanie ukladów równań metodą Jacobiego

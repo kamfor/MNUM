@@ -1,17 +1,22 @@
 % funkcja zwracająca podział LU macieży kwadratowej oraz macierz transformacji po wyborze elementu głównego macież LU zistaje zapisana w jednej maciezy w celu oszczędności p
 function [LU,P] = lucw (A)
   n = size(A)(1,1);
+  
   if n!=size(A)(1,2) 
-    print("macierz nie jest kwadratowa")
+    print("macierz nie jest kwadratowa");
   endif
   P = eye(n); %macierz transformacji
   LU = A; %macież LU powstaje poprzez bezposrednie operacje na elementach maciezy wejsciowej
   
   for k = 1:n-1
- 
+  
+    %{
     if(LU(k,k)<eps)
-      printf("macierz osobliwa")
+      printf("macierz osobliwa");
     endif
+    %}
+    
+  
     
     elem = k; % początkowa pozycja elementu głownego
     for m = k:n %wybór elementu głównego
@@ -33,14 +38,24 @@ function [LU,P] = lucw (A)
           
     end
     
+    
+  
+    
+    
+    %{
     for i = k+1:n % normalizacja kolumny pod elementem głównym
-      LU(i,k) = LU(i,k)/(LU(k,k));
+      LU(i,k) = LU(i,k)/LU(k,k);
     end
+    %}
     
     for i = k+1:n % normalizacja podmacieży pod elementem głównym
+    
+      LU(i,k) = LU(i,k)/LU(k,k);
+      
       for j = k+1:n
           LU(i,j) = LU(i,j) - LU(i,k) * LU(k,j);
       end
+      
     end
     %M = LU
   end

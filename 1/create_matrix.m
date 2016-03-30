@@ -16,7 +16,7 @@ if (p==1)
         A(i,j) = 5;
       endif
     end
-      B(i) = 2 + 0.3*i;
+      B(i,1) = 2 + 0.3*i;
   end
 endif
 
@@ -30,7 +30,7 @@ for i = 1:n
       endif
      
     end
-      B(i) = 1 + 0.4*i;
+      B(i,1) = 1 + 0.4*i;
   end
 endif
 
@@ -40,9 +40,9 @@ for i = 1:n
       A(i,j) = 8/(9*(i + j + 1));
     end
       if (mod(i, 2) == 0)
-        B(i) = 4/(3*i);
+        B(i,1) = 4/(3*i);
       else
-        B(i) = 0;
+        B(i,1) = 0;
       endif
   end
 endif

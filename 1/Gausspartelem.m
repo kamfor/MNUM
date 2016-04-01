@@ -20,9 +20,17 @@ t = cputime;
 
 x = lufx(LU,P,b);
 
+res = A*x - b;
+n = norm(res,1)
+
+if(i==1) 
+  grow(A,x,b); 
+  qw=x
+endif
+
 m = cputime-t
 
-if (m>60) 
+if (m>30) 
   break; 
   
 endif 

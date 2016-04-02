@@ -8,10 +8,14 @@
 
 clear
 
+F = fopen('results.txt','w');
+
 for i= 1:3
 
-  for j= 0:4
-
+  for j= 0:7
+  
+  result(1,j+1) = 10*2^j; 
+  
   t = cputime; 
 
   [A,b] = create_matrix(10*2^j,i);
@@ -20,27 +24,39 @@ for i= 1:3
   
   x = lufx(LU,P,b);
   
-  
-
   res = A*x - b;
-  norma = norm(res,1)  
-  plot(x,b)
+  error = norm(res,1); 
   
-  %res = A*grow(A,x,b,LU,P) - b;
-  %normagrow = norm(res,1)
-
+  result(2,j+1) = error; 
+    
   time = cputime-t
-
-  if (time>30) 
-  break; 
-  endif 
+  
+  fprintf(F, 'Podpunkt: %d ,Liczba rownan: %d , Blad: %g , Czas: %d sek. \n',i,result(1,j+1),result(2,j+1),time);
 
   endfor
-
-  if (time>60) 
-  break; 
   
-  endif 
+  a = stem(result(1,:),result(2,:),"o","filled"); 
+  
+  if(i==1)
+    title('Plot 1');
+    xlabel('number of eqations');
+    ylabel('error');
+    saveas(a, 'wykres1.png');
+  
+  elseif (i==2) 
+    title('Plot 2');
+    xlabel('number of eqations');
+    ylabel('error');
+    saveas(a, 'wykres2.png');
+  else
+    title('Plot 3');
+    xlabel('number of eqations');
+    ylabel('error');
+    saveas(a, 'wykres3.png');
+  endif
+ 
 
 endfor
+
+fclose(F);
 

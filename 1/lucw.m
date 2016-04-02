@@ -16,38 +16,28 @@ function [LU,P] = lucw (A)
     endif
     %}
     
+    [void pos] = max(abs(LU(k:n,k))); %wybór elementu głównego
+    pos=pos+k-1;
   
-    
-    elem = k; % początkowa pozycja elementu głownego
-    for m = k:n %wybór elementu głównego
-      
-      if(abs(LU(m,k))>abs(LU(elem,k)))
-        elem = m;
-      endif
-      
-      if(elem!=k) % zamiana wierszy
-        temp = LU(elem,:);
-        LU(elem,:) = LU(k,:);
-        LU(k,:) = temp;
+    if(pos~=k) % zamiana wierszy
+      temp = LU(pos,:);
+      LU(pos,:) = LU(k,:);
+      LU(k,:) = temp;
         
-        P(k,k) = 0; % zapis zmiany wierszy do maciezy transformacji
-        P(elem,elem) = 0;
-        P(k,elem) = 1;
-        P(elem,k) = 1;
-      endif
-          
-    end
-   
-    
+      P(k,k) = 0; % zapis zmiany wierszy do maciezy transformacji
+      P(pos,pos) = 0;
+      P(k,pos) = 1;
+      P(pos,k) = 1;
+    endif
+             
     for i = k+1:n % normalizacja podmacieży pod elementem głównym
     
-      LU(i,k) = LU(i,k)/LU(k,k);
       
-      for j = k+1:n
-          LU(i,j) = LU(i,j) - LU(i,k) * LU(k,j);
-      end
+      LU(i,k) = LU(i,k)/LU(k,k);
+      LU(i,(k+1):n) = LU(i,(k+1):n) - LU(i,k)*LU(k,(k+1):n);
       
     end
     
   end
+  
 endfunction

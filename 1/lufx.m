@@ -2,7 +2,7 @@ function [x] = lufx (LU,P,b)
 
 n = size(b)(1,1);
 
-b = P*b;
+b = (P')*b;
 
 %macierz trójkątna dolna Ly = Pb
 

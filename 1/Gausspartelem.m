@@ -8,13 +8,13 @@
 
 clear
 
-for i= 0:4
+for i= 1:3
 
-  for j= 1:3
+  for j= 0:4
 
   t = cputime; 
 
-  [A,b] = create_matrix(10*2^i,j);
+  [A,b] = create_matrix(10*2^j,i);
 
   [LU,P] = lucw(A);
   
@@ -24,6 +24,7 @@ for i= 0:4
 
   res = A*x - b;
   norma = norm(res,1)  
+  plot(x,b)
   
   %res = A*grow(A,x,b,LU,P) - b;
   %normagrow = norm(res,1)

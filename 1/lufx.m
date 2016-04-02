@@ -1,6 +1,6 @@
 function [x] = lufx (LU,P,b)
 
-n = size(b)(1,1)
+n = size(b)(1,1);
 
 b = P*b;
 

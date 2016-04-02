@@ -37,16 +37,7 @@ function [LU,P] = lucw (A)
       endif
           
     end
-    
-    
-  
-    
-    
-    %{
-    for i = k+1:n % normalizacja kolumny pod elementem głównym
-      LU(i,k) = LU(i,k)/LU(k,k);
-    end
-    %}
+   
     
     for i = k+1:n % normalizacja podmacieży pod elementem głównym
     
@@ -57,6 +48,6 @@ function [LU,P] = lucw (A)
       end
       
     end
-    %M = LU
+    
   end
 endfunction

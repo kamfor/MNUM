@@ -8,39 +8,38 @@
 
 clear
 
-for i= 0:10
+for i= 0:4
 
-for j= 1:3
+  for j= 1:3
 
-t = cputime; 
+  t = cputime; 
 
-[A,b] = create_matrix(10*2^i,j);
+  [A,b] = create_matrix(10*2^i,j);
 
-[LU,P] = lucw(A);
+  [LU,P] = lucw(A);
+  
+  x = lufx(LU,P,b);
+  
+  
 
-x = lufx(LU,P,b);
+  res = A*x - b;
+  norma = norm(res,1)  
+  
+  %res = A*grow(A,x,b,LU,P) - b;
+  %normagrow = norm(res,1)
 
-res = A*x - b;
-n = norm(res,1)
+  time = cputime-t
 
-if(i==1) 
-  grow(A,x,b); 
-  qw=x
-endif
+  if (time>30) 
+  break; 
+  endif 
 
-m = cputime-t
+  endfor
 
-if (m>30) 
+  if (time>60) 
   break; 
   
-endif 
-
-endfor
-
-if (m>60) 
-  break; 
-  
-endif 
+  endif 
 
 endfor
 

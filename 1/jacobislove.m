@@ -33,11 +33,11 @@ for i= 1:3 % iteracja po podpunktach z zadania 2
   
   if(time>120) % dla czasu pow 2minut przerwanie wykonania
     break; 
-  endif
+  end
   
   printf('Zastosowanie metody do ukladow z zadania 2,'); 
   printf('Podpunkt: %d ,Liczba rownan: %d , Blad: %g , Czas: %d sek. \n',i,result(1,j+1),result(2,j+1),time);
 
-  endfor
+  end
   
-endfor
+end

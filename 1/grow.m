@@ -7,9 +7,9 @@ function [x] = grow (A,x,b,LU,P)
     r = A*x-b;
     if(norm(r)<norm(o))
       break; 
-    endif
+    end
     dx = lufx(LU,P,r);
     x = x-dx;
-  endwhile
+  end
 
-endfunction
+end

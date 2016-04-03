@@ -15,7 +15,7 @@ function [x] = lufx (LU,P,b)
   
     for j = 1:i-1
       s = s - LU(i,j)*y(j,1);
-    endfor
+    end
   
     y(i,1) = s;
   
@@ -37,4 +37,4 @@ function [x] = lufx (LU,P,b)
   
   end
 
-endfunction
+end

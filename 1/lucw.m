@@ -3,9 +3,9 @@ function [LU,P] = lucw (A)
 
   n = size(A)(1,1);
   
-  if n!=size(A)(1,2) 
-    print("macierz nie jest kwadratowa");
-  endif
+  if n~=size(A)(1,2) 
+    print('macierz nie jest kwadratowa');
+  end
   P = eye(n); %macierz transformacji
   LU = A; 
   
@@ -23,7 +23,7 @@ function [LU,P] = lucw (A)
       P(pos,pos) = 0;
       P(k,pos) = 1;
       P(pos,k) = 1;
-    endif
+    end
              
     for i = k+1:n % normalizacja podmacierzy pod elementem głównym
           
@@ -34,4 +34,4 @@ function [LU,P] = lucw (A)
     
   end
   
-endfunction
+end

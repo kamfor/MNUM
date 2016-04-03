@@ -6,17 +6,17 @@ function [A,B] = create_matrix (n,p)
      for j = 1:n
        if (i==j)
          A(i,j) = 10;
-       endif
+       end
        if (i==j-1)
          A(i,j) = 5;
-       endif
+       end
        if (i==j+1)
          A(i,j) = 5;
-       endif
+       end
      end
      B(i,1) = 2 + 0.3*i;
    end
-  endif
+  end
 
   if (p==2) 
   for i = 1:n
@@ -25,11 +25,11 @@ function [A,B] = create_matrix (n,p)
         A(i,j) = 1/6;
       else
         A(i,j) = 2*(i-j) + 1;
-      endif
+      end
     end
     B(i,1) = 1 + 0.4*i;
    end
-  endif
+  end
 
   if (p==3)
   for i = 1:n
@@ -40,8 +40,8 @@ function [A,B] = create_matrix (n,p)
       B(i,1) = 4/(3*i);
     else
       B(i,1) = 0;
-    endif
+    end
    end
-  endif
+  end
   
-endfunction
+end

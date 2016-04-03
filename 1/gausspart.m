@@ -26,9 +26,9 @@ for i= 1:3 % iteracja po podpunktach
   
   fprintf(F, 'Podpunkt: %d ,Liczba rownan: %d , Blad: %g , Czas: %d sek. \n',i,result(1,j+1),result(2,j+1),time);
 
-  endfor
+  end
   
-  a = stem(result(1,:),result(2,:),"o","filled"); % utworzenie wykresu
+  a = stem(result(1,:),result(2,:),'o','filled'); % utworzenie wykresu
   
   if(i==1)
     title('Plot 1');
@@ -46,10 +46,10 @@ for i= 1:3 % iteracja po podpunktach
     xlabel('number of eqations');
     ylabel('error');
     saveas(a, 'wykres3.png');
-  endif
+  end
  
 
-endfor
+end
 
 fclose(F);
 

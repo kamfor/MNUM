@@ -175,7 +175,7 @@ function [LU,P] = lucw (A)
   n = size(A)(1,1);
   
   if n!=size(A)(1,2) 
-    print("macierz nie jest kwadratowa");
+    print('macierz nie jest kwadratowa');
   endif
   P = eye(n); %macierz transformacji
   LU = A; 
@@ -194,7 +194,7 @@ function [LU,P] = lucw (A)
       P(pos,pos) = 0;
       P(k,pos) = 1;
       P(pos,k) = 1;
-    endif
+    end
              
     for i = k+1:n % normalizacja podmacierzy pod elementem glownym
           
@@ -205,7 +205,7 @@ function [LU,P] = lucw (A)
     
   end
   
-endfunction
+end
 
 \end{lstlisting}
 
@@ -246,7 +246,7 @@ function [x] = lufx (LU,P,b)
   
     for j = 1:i-1
       s = s - LU(i,j)*y(j,1);
-    endfor
+    end
   
     y(i,1) = s;
   
@@ -268,7 +268,7 @@ function [x] = lufx (LU,P,b)
   
   end
 
-endfunction
+end
 
 \end{lstlisting}
 
@@ -299,17 +299,17 @@ function [A,B] = create_matrix (n,p)
      for j = 1:n
        if (i==j)
          A(i,j) = 10;
-       endif
+       end
        if (i==j-1)
          A(i,j) = 5;
-       endif
+       end
        if (i==j+1)
          A(i,j) = 5;
-       endif
+       end
      end
      B(i,1) = 2 + 0.3*i;
    end
-  endif
+  end
 
   if (p==2) 
   for i = 1:n
@@ -318,11 +318,11 @@ function [A,B] = create_matrix (n,p)
         A(i,j) = 1/6;
       else
         A(i,j) = 2*(i-j) + 1;
-      endif
+      end
     end
     B(i,1) = 1 + 0.4*i;
    end
-  endif
+  end
 
   if (p==3)
   for i = 1:n
@@ -333,11 +333,11 @@ function [A,B] = create_matrix (n,p)
       B(i,1) = 4/(3*i);
     else
       B(i,1) = 0;
-    endif
+    end
    end
-  endif
+  end
   
-endfunction
+end
 \end{lstlisting}
 
 \subsection{Wyniki działania programu}
@@ -375,9 +375,9 @@ for i= 1:3 % iteracja po podpunktach
   
   fprintf(F, 'Podpunkt: %d ,Liczba rownan: %d , Blad: %g , Czas: %d sek. \n',i,result(1,j+1),result(2,j+1),time);
 
-  endfor
+  end
   
-  a = stem(result(1,:),result(2,:),"o","filled"); % utworzenie wykresu
+  a = stem(result(1,:),result(2,:),'o','filled'); % utworzenie wykresu
   
   if(i==1)
     title('Plot 1');
@@ -395,10 +395,10 @@ for i= 1:3 % iteracja po podpunktach
     xlabel('number of eqations');
     ylabel('error');
     saveas(a, 'wykres3.png');
-  endif
+  end
  
 
-endfor
+end
 
 fclose(F);
 \end{lstlisting}
@@ -505,12 +505,12 @@ function [x] = grow (A,x,b,LU,P)
     r = A*x-b;
     if(norm(r)<norm(o)) % jezeli blad rosnie zakoncz
       break; 
-    endif
+    end
     dx = lufx(LU,P,r); % obliczenie delta x
     x = x-dx; odjecie od wektora delta x
-  endwhile
+  end
 
-endfunction
+end
 
 \end{lstlisting}
 
@@ -537,7 +537,7 @@ for i= 1:3 % iteracja po podpunktach
   
   printf('Blad dla zestawu: %d po poprawianiu: %g,\n',i,error1);
   
-endfor
+end
 
 \end{lstlisting}
 
@@ -605,15 +605,15 @@ function [x] = jacobi(A,b)
       
       if(i==j)
           D(i,j) = 1/A(i,j);% macierz D powstaje jako D'    
-      endif
+      end
       
       if(i<j)
         U(i,j) = A(i,j);
-      endif
+      end
       
       if (j<i)
         L(i,j) = A(i,j);
-      endif
+      end
     
     end
   
@@ -635,11 +635,11 @@ function [x] = jacobi(A,b)
     
     if(lerr>err) % jezeli prezyzja maleje zakoncz iteracje
       break;
-    endif
+    end
    
   end
   
-endfunction
+end
 
 \end{lstlisting}
 
@@ -680,13 +680,13 @@ for i= 1:3 % iteracja po podpunktach z zadania 2
   
   if(time>120) % dla czasu pow 2minut przerwanie wykonania
     break; 
-  endif
+  end
   
   printf('Podpunkt: %d ,Liczba rownan: %d , Blad: %g , Czas: %d sek. \n',i,result(1,j+1),result(2,j+1),time);
 
-  endfor
+  end
   
-endfor
+end
 
 \end{lstlisting}
 

@@ -1,18 +1,11 @@
-%Rozwiązywanie układów równań metodą eliminacji Gaussa z częściowym wyborem elementu podstawowego. 
-
-%generowanie Macieży o wymiarach mxm o założeniach podanych w zadaniu`
-
-% w 2.2 źle uwarunkowane bo wychodza eelementty na diagonali bliskie 0 
-
-%Ly = Pb, Ux = y PA = LU
-
+%Skrypt generujący wyniki oraz wykresy
 clear
 
-F = fopen('results.txt','w');
+F = fopen('results.txt','w'); %wynik zapisany do pliku
 
-for i= 1:3
+for i= 1:3 % iteracja po podpunktach
 
-  for j= 0:7
+  for j= 0:7 % iteracja po liczbie rownan
   
   result(1,j+1) = 10*2^j; 
   
@@ -29,13 +22,13 @@ for i= 1:3
   
   result(2,j+1) = error; 
     
-  time = cputime-t
+  time = cputime-t; % obliczenie czasu wykonania
   
   fprintf(F, 'Podpunkt: %d ,Liczba rownan: %d , Blad: %g , Czas: %d sek. \n',i,result(1,j+1),result(2,j+1),time);
 
   endfor
   
-  a = stem(result(1,:),result(2,:),"o","filled"); 
+  a = stem(result(1,:),result(2,:),"o","filled"); % utworzenie wykresu
   
   if(i==1)
     title('Plot 1');

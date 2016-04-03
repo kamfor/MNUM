@@ -1,0 +1,51 @@
+% TeX encoding = utf8
+% TeX spellcheck = pl_PL 
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\newgeometry{tmargin=3cm, bmargin=3cm, lmargin=2cm, rmargin=2cm}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\lstset{language=Matlab,%
+    basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},%
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,
+    numbers=left,%
+    numberstyle={ \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,break},emphstyle=[1]\color{blue}, %some words to emphasise
+    emph=[2]{,.}, emphstyle=[2]\color{yellow},%
+}
+
+\section*{Matlab Code}
+
+
+
+\lstinputlisting{gausspart.m}
+\section{begin}
+	
+	
+\end{document}
+
+

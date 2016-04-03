@@ -11,15 +11,15 @@ function [x] = jacobi(A,b)
       
       if(i==j)
           D(i,j) = 1/A(i,j);% macierz D powstaje jako D'    
-      endif
+      end
       
       if(i<j)
         U(i,j) = A(i,j);
-      endif
+      end
       
       if (j<i)
         L(i,j) = A(i,j);
-      endif
+      end
     
     end
   
@@ -41,8 +41,8 @@ function [x] = jacobi(A,b)
     
     if(lerr>err) % jezeli prezyzja maleje zakoncz iteracje
       break;
-    endif
+    end
    
   end
   
-endfunction
+end

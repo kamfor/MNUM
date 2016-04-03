@@ -19,4 +19,4 @@ for i= 1:3 % iteracja po podpunktach
   
   printf('Blad dla zestawu: %d po iteracyjnym poprawianiu: %g,\n',i,error1);
   
-endfor
+end

@@ -73,7 +73,7 @@ Poniżej kod programu wyznaczającego epsilon maszynowy w programie Matlab:
   b=2.0; 
  
 % Epsilon maszynowy 
-  while( b != 1)
+  while( b ~= 1)
       epsilon=a; 
       a=a/2; 
       b=1.0+a; 
@@ -87,7 +87,7 @@ Poniżej kod programu wyznaczającego epsilon maszynowy w programie Matlab:
   
 % Najmniejsza liczba rozna od 0
   a = 1.0;
-  while(a != 0)
+  while(a ~= 0)
     dbl_eps = a; 
     a = a/3; 
   end

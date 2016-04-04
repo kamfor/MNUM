@@ -4,7 +4,7 @@ function [LU,P] = lucw (A)
   n = size(A)(1,1);
   
   if n~=size(A)(1,2) 
-    print('macierz nie jest kwadratowa');
+    fprint('macierz nie jest kwadratowa');
   end
   P = eye(n); %macierz transformacji
   LU = A; 

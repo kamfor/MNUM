@@ -1,1 +1,0 @@
-%funkcja rozkladu qr macierzy

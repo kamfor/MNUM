@@ -10,7 +10,8 @@ function [D] = eigshift (A, prec, it)
     i=0; 
     while i <= it & max(abs(K(k,1:k-1))) > prec
       DD = K(k-1:k,k-1:k); %podmacierz 2x2 z dolnego rogu
-      [e1,e2] = quadpolynroots(1,-(DD(1,1)+DD(2,2)),DD(2,2)*DD(1,1)-DD(1,1)*DD(1,2));
+      [e1,e2] = roots(1,-(DD(1,1)+DD(2,2)),DD(2,2)*DD(1,1)-DD(1,1)*DD(1,2));
+      % M = [a b,c d] rownanie dla M : 1*x^2 -(a+d)*x +a*d-c*b
       if abs(e1-DD(2,2)) < abs(e2-DD(2,2))
         shift = e1; %bajblizsza wartosc wlasna podmacierzy DD
       else

@@ -1,10 +1,12 @@
 %funkcja zwracajaca diagonalna maciez z wartosciami wlasnymi metoda qr z przesunieciami 
 %A macierz wejściowa , prec prezycja wyniku, it maksymalna liczba iteracji
-function [D] = eigshift (A, prec, it)
+function [D,t,i,v] = eigshift (A, prec, it)
 
   n = size(A,1);
   D = diag(zeros(n));
   I = A; %macierz poczatkowa
+  v = 0; 
+  time = tic;
   for k=n:-1:2
     K = I; % macierz poczatkowa dla pojedyncze wart. wlasnej
     i=0; 
@@ -24,6 +26,7 @@ function [D] = eigshift (A, prec, it)
     end
     if i>it
       error('przekroczono maksymalna liczbe iteracji');
+      v = 1; 
     end
     D(k) = K(k,k);
     if k>2
@@ -32,5 +35,6 @@ function [D] = eigshift (A, prec, it)
       D(1) = K(1,1); %ostatnia wartosc wlasna
     end
   end
+  t = toc(time);
 
 end

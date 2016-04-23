@@ -1,7 +1,7 @@
 %funkcja wyznaczjaca wartosci wlasne metoda qr bez przesuniec
 function [D,t,i,v] = eignoshift (A, prec, it)
   s = tic;
-  v=0;
+  v=1;
   n = size(A,1); 
   i = 1; 
   while i <= it && max(max(A-diag(diag(A)))) > prec
@@ -11,7 +11,7 @@ function [D,t,i,v] = eignoshift (A, prec, it)
   end
   if i > it 
     %error('przekrczono maksymalna liczbe iteracji');
-    v=1;
+    v=0;
   end
   D = diag(A);  
   t = toc(s);

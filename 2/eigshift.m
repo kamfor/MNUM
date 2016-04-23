@@ -25,7 +25,7 @@ function [D,t,i,v] = eigshift (A, prec, it)
       i = i+1; 
     end
     if i>it
-      error('przekroczono maksymalna liczbe iteracji');
+      %error('przekroczono maksymalna liczbe iteracji');
       v = 1; 
     end
     D(k) = K(k,k);

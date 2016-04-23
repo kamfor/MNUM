@@ -5,7 +5,7 @@
   
   %macierz symetryczna
   fprintf(F, 'Macierz symetryczna\n');
-  for i=5:*2:20;
+  for i=5:5:20;
     
     fprintf(F, 'Liczba rownan %d \n',i);
     Gtimen = 0; 
@@ -61,12 +61,12 @@
     fprintf(F, 'Sredni blad: %d\n\n',Gprecs);
     
     fprintf(F, 'Wyniki dla funkcji eig()\n');
-    fprintf(F, 'Sredni czas wykonania: %d\n',Gteig;
+    fprintf(F, 'Sredni czas wykonania: %d\n',Gteig);
     fprintf(F, 'Srednia blad: %d\n',Geigprec);
   end
   % macierz niesymetryczna
   fprintf(F, 'Macierz niesymetryczna\n');
-  for i=5:*2:20;
+  for i=5:5:20;
     
     fprintf(F, 'Liczba rownan %d \n',i);  %macierz niesymetryczna z z przesunieciami
     Gtimes = 0; 
@@ -87,7 +87,7 @@
         Gtimes = Gtimes + times; 
         Giters = Giters + its; 
         Gprecs = Gprecs + norm(S); 
-        Gvalids = Gvalids +1;
+        Gvalids = Gvalids + 1;
       end
     end
     Gtimes = Gtimes/Gvalids; 
@@ -103,7 +103,8 @@
     fprintf(F, 'Sredni blad: %d\n\n',Gprecs);
     
     fprintf(F, 'Wyniki dla funkcji eig()\n');
-    fprintf(F, 'Sredni czas wykonania: %d\n',Gteig;
+    fprintf(F, 'Sredni czas wykonania: %d\n',Gteig);
     fprintf(F, 'Srednia blad: %d\n',Geigprec);
   end
+  fclose(F);
    

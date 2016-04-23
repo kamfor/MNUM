@@ -10,7 +10,7 @@ function [D,t,i,v] = eignoshift (A, prec, it)
     i=i+1;
   end
   if i > it 
-    error('przekrczono maksymalna liczbe iteracji');
+    %error('przekrczono maksymalna liczbe iteracji');
     v=1;
   end
   D = diag(A);  

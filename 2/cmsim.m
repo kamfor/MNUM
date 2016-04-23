@@ -2,6 +2,6 @@
 function [A] = cmsim (n)
 
   B = rand(n); 
-  A = B*B'; 
+  A = B'+B; 
 
 end

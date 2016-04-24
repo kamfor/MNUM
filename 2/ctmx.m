@@ -1,3 +1,4 @@
+%funkcja tworzaca macierze i wektory rozwiazan podane w zadaniu 2
 function [A1,A2,b1,b2] = ctmx (n)
 
 A1 = zeros(2*n,n);

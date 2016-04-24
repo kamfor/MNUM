@@ -1,5 +1,5 @@
 %realizacja zadania 1 z projektu 2.17
-
+  clear; 
   F = fopen('results.txt','w'); %wynik zapisany do pliku
   fprintf(F, 'Wyniki do zadania numer 1 \n');
   Z = [5 10 20];
@@ -7,7 +7,7 @@
   %macierz symetryczna
   fprintf(F, '###Macierz symetryczna###\n\n');
   for i=1:3;
-    Gtimen = 0; 
+    Gtimen = 0; %zmienne do wyliczania średnich wartosci
     Gitern = 0; 
     Gprecn = 0; 
     Gvalidn = 0; 
@@ -19,8 +19,8 @@
     Geigprec = 0; 
     for j=1:30
       A = cmsim(Z(i));
-      [R,timen,itn,validn] = eignoshift(A,0.00001,1000);
-      [S,times,its,valids] = eigshift(A,0.00001,1000);
+      [R,timen,itn,validn] = eignoshift(A,0.00001,1000);% metoda bez przesuniec
+      [S,times,its,valids] = eigshift(A,0.00001,1000); % metoda z przesunieciami
       eigstart = tic; 
       E = eig(A);
       teig = toc(eigstart);
@@ -30,7 +30,7 @@
       Gitern = Gitern + itn; 
       Gprecn = Gprecn + norm(R);
       if validn == 1
-        Gvalidn = Gvalidn + 1;
+        Gvalidn = Gvalidn + 1; % zliczanie poprawnych rozwiazan
       end
       Gtimes = Gtimes + times;
       Giters = Giters + its; 

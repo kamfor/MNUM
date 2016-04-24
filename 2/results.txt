@@ -1,96 +1,77 @@
 Wyniki do zadania numer 1 
-Macierz symetryczna
-###Liczba rownan 5 ###
-Macierz symetryczna bez przesuniec
-Sredni czas wykonania: Inf
-Srednia ilosc iteracji: Inf
-Ilosc zakonczonych: 0
-Sredni blad: Inf
+<<<Macierz symetryczna>>>
 
-Macierz symetryczna z przesunieciami
-Sredni czas wykonania: Inf
-Srednia ilosc iteracji: Inf
-Ilosc zakonczonych: 0
-Sredni blad: Inf
-
-Wyniki dla funkcji eig()
-Sredni czas wykonania: 3.12487e-05
-Srednia blad: 5.46686
-
-###Liczba rownan 10 ###
-Macierz symetryczna bez przesuniec
-Sredni czas wykonania: 22.7577
-Srednia ilosc iteracji: 7435
-Ilosc zakonczonych: 1
-Sredni blad: 318.36
-
-Macierz symetryczna z przesunieciami
-Sredni czas wykonania: Inf
-Srednia ilosc iteracji: Inf
-Ilosc zakonczonych: 0
-Sredni blad: Inf
-
-Wyniki dla funkcji eig()
-Sredni czas wykonania: 4.13259e-05
-Srednia blad: 10.6296
-
-08e-05
-Srednia blad: 10.7726
-
-Liczba rownan 20 
-Macierz symetryczna bez przesuniec
-Sredni czas wykonania: 10.0112
-Srednia ilosc iteracji: 968.71
-Ilosc zakonczonych: 31
-Sredni blad: 19.9431
-
-Macierz symetryczna z przesunieciami
-Sredni czas wykonania: 171.334
-Srednia ilosc iteracji: 36792.6
-Ilosc zakonczonych: 31
-Sredni blad: 10.1908
-
-Wyniki dla funkcji eig()
-Sredni czas wykonania: 9.8149e-05
-Srednia blad: 21.6425
-
-Macierz niesymetryczna
-Liczba rownan 5 
-cierz symetryczna z przesunieciami
-Sredni czas wykonania: 6.85619
-Srednia ilosc iteracji: 7381.11
-Ilosc zakonczonych: 28
-Sredni blad: NaN
-
-Wyniki dla funkcji eig()
-Sredni czas wykonania: 4.81685e-05
-Srednia blad: 2.55201
-Liczba rownan 10 
-Macierz symetryczna z przesunieciami
-Sredni czas wykonania: 31.7287
-Srednia ilosc iteracji: 18009
-Ilosc zakonczonych: 29
-Sredni blad: 5.33553
-
-Wyniki dla funkcji eig()
-Sredni czas wykonania: 6.64552e-05
-Srednia blad: 5.34414
-Liczba rownan 20 
-czonych: 30
-Sredni blad: 5.3671
-
-###Wyniki dla funkcji eig()###
-Sredni czas wykonania: 5.21978e-05
-Srednia blad: 5.3671
-
-###Liczba rownan 20 ###
-###Macierz niesymetryczna z przesunieciami###
-Sredni czas wykonania: 0.252046
-Srednia ilosc iteracji: 45.2
+<<<Liczba rownan 5 >>>
+<<<Macierz symetryczna bez przesuniec>>>
+Sredni czas wykonania: 0.0619796
+Srednia ilosc iteracji: 62.1333
 Ilosc zakonczonych: 30
-Sredni blad: 10.7235
+Srednia roznica miedzy eig(): 7.95247
 
-###Wyniki dla funkcji eig()###
-Sredni czas wykonania: 0.00013299
-Srednia blad: 10.7235
+<<<Macierz symetryczna z przesunieciami>>>
+Sredni czas wykonania: 0.00865486
+Srednia ilosc iteracji: 7.96667
+Ilosc zakonczonych: 30
+Srednia roznica miedzy eig(): 7.48066
 
+<<<Wyniki dla funkcji eig()>>>
+Sredni czas wykonania: 3.31163e-05
+<<<Liczba rownan 10 >>>
+<<<Macierz symetryczna bez przesuniec>>>
+Sredni czas wykonania: 0.773586
+Srednia ilosc iteracji: 256.321
+Ilosc zakonczonych: 28
+Srednia roznica miedzy eig(): 17.7433
+
+<<<Macierz symetryczna z przesunieciami>>>
+Sredni czas wykonania: 0.0323579
+Srednia ilosc iteracji: 14.5333
+Ilosc zakonczonych: 30
+Srednia roznica miedzy eig(): 15.7378
+
+<<<Wyniki dla funkcji eig()>>>
+Sredni czas wykonania: 4.24306e-05
+<<<Liczba rownan 20 >>>
+<<<Macierz symetryczna bez przesuniec>>>
+Sredni czas wykonania: 9.13961
+Srednia ilosc iteracji: 865.773
+Ilosc zakonczonych: 22
+Srednia roznica miedzy eig(): 44.0736
+
+<<<Macierz symetryczna z przesunieciami>>>
+Sredni czas wykonania: 0.161214
+Srednia ilosc iteracji: 28.2333
+Ilosc zakonczonych: 30
+Srednia roznica miedzy eig(): 31.0682
+
+<<<Wyniki dla funkcji eig()>>>
+Sredni czas wykonania: 6.18299e-05
+<<<Macierz niesymetryczna>>>
+
+<<<Liczba rownan 5 >>>
+<<<Macierz niesymetryczna z przesunieciami>>>
+Sredni czas wykonania: 0.010867
+Srednia ilosc iteracji: 9.73333
+Ilosc zakonczonych: 30
+Srednia roznica miedzy eig(): 0.916182
+
+<<<Wyniki dla funkcji eig()>>>
+Sredni czas wykonania: 3.57231e-05
+<<<Liczba rownan 10 >>>
+<<<Macierz niesymetryczna z przesunieciami>>>
+Sredni czas wykonania: 0.046351
+Srednia ilosc iteracji: 20.6
+Ilosc zakonczonych: 30
+Srednia roznica miedzy eig(): 2.35018
+
+<<<Wyniki dla funkcji eig()>>>
+Sredni czas wykonania: 5.66324e-05
+<<<Liczba rownan 20 >>>
+<<<Macierz niesymetryczna z przesunieciami>>>
+Sredni czas wykonania: 0.251406
+Srednia ilosc iteracji: 44.7333
+Ilosc zakonczonych: 30
+Srednia roznica miedzy eig(): 4.95558
+
+<<<Wyniki dla funkcji eig()>>>
+Sredni czas wykonania: 0.000143798

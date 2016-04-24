@@ -9,10 +9,10 @@ A1 = zeros(2*n,n);
       A1(j,j) = 1/6; 
       A2(i,j) = 8/(9*(i+j+1));
     end; 
-    b1(1,i) = 1 + 0.4*i;
+    b1(i,1) = 1 + 0.4*i;
     if (mod(i, 2) == 0)
-    b2(1,i) = 4/(3*i); 
+    b2(i,1) = 4/(3*i); 
     end
   end  
 
-endfunction
+end

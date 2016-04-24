@@ -1,5 +1,6 @@
 %funkcja zwracajaca diagonalna maciez z wartosciami wlasnymi metoda qr z przesunieciami 
 %A macierz wejściowa , prec prezycja wyniku, it maksymalna liczba iteracji
+%Na podstawie skryptu prof. Tatjewskiego
 function [D,t,iteration,v] = eigshift (A, prec, it)
 
   n = size(A,1);
@@ -39,4 +40,5 @@ function [D,t,iteration,v] = eigshift (A, prec, it)
     end
   end
   t = toc(time);
+  
 end

@@ -1,5 +1,7 @@
 %funkcja wyznaczjaca wartosci wlasne metoda qr bez przesuniec
+%na podstawie ksiazki prof. Tatjewskiego
 function [D,t,i,v] = eignoshift (A, prec, it)
+
   s = tic;
   v=1;
   n = size(A,1); 

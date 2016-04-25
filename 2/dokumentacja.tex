@@ -169,7 +169,7 @@ Metodę wyznaczania wartości własnych QR z przesunięiami można przybliżyć 
 \begin{enumerate}
   \item Znajdujemy wartość własną $\lambda_{n}$ jako najbliższą wartość własną podmacierzy 2x2 z prawego dolnego rogu macierzy $A^{(k)}$ wyznaczając wartości własne jako pierwiastki wielomianu drugiego stopnia o współczynnikach wielomianu charakterystycznego. 
   \item Opuszczamy ostatni wiersz i ostatnią kolumnę aktualnej macierzy $A^{(k)}$ (deflacja).
-  \item Znajdujemy następną wartość własną $\lambda_{n-1}$, przeksztaucając macierz $A_{n-1}^{(k)}$ aż do uzyskania $e_{n-2}^{(k)} = 0$. Iterujemy aż do wyzerowania wszystkich elementów poza elementem diagonalnym (pętla while). 
+  \item Znajdujemy następną wartość własną $\lambda_{n-1}$, przekształcając macierz $A_{n-1}^{(k)}$ aż do uzyskania $e_{n-2}^{(k)} = 0$. Iterujemy aż do wyzerowania wszystkich elementów poza elementem diagonalnym (pętla while). 
   \item Powtarzamy kroki 2 i 3 aż do uzyskania wszystkich wartości własnych uwzględniając oczekiwaną prezycję obliczeń. 
 \end{enumerate} 
 
@@ -496,9 +496,7 @@ Wyniki w postaci wykresów zależności błędu od liczby równań odpowiednio d
 \vspace{10cm}
 \subsection{Wnioski}
 Jak wynika z wykresu dla podpunktu 1 rozwiązania dla obu metod w większości się pokrywają. Jest to spowodowane dobrym uwarunkowaniem macierzy dla obu metod. Natomiast w podpunkcie 2 metoda QR dokładniej wyznacza rozwiązania 
-jednak tylko dla pewniej liczby równań. Jest to spowodowane złym uwarunkowaniem dla obu algorytmów. Wyniki nie spełniają żadnej znanej zależności, szczególnie w przypadku metody QR poniważ większa ilość operacji uwydatnia błędy. 
-
-
+jednak tylko dla pewniej liczby równań. Jest to spowodowane złym uwarunkowaniem dla obu algorytmów. Wyniki nie spełniają żadnej znanej zależności, szczególnie w przypadku metody QR ponieważ większa ilość operacji uwydatnia błędy. 
 	
 \end{document}
 

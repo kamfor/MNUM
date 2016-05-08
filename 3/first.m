@@ -10,22 +10,22 @@ x  = -5: .1 : 5;
 %axis([-5 5 -150 150])
 
 n=1000; 
-x1 = 1; 
+x1 = -5; 
 x2 = 5; 
 
 %wyznaczanie przedzialow izolacji
 for j=1:n
   if fun(x1)*fun(x2)<0
-    a = x1; 
+    a = x1;
     b = x2;
-    bisection('fun',a,b,100)
-    secant('fun',a,b,100)
-    newton('fun',a,100)
+    t = bisection('fun',a,b,100)
+    m = secant('fun',a,b,100)
+    g = newton('fun',a,100)
     x1 = x2;
   elseif abs(fun(x1))<abs(fun(x2))
-    x1 = x1+1.1*(x1-x2);
+    x1 = x1+5*(x1-x2);
   else
-    x2 = x2+1.1*(x2-x1);
+    x2 = x2+5*(x2-x1);
   end
   if(x1>5)
     break; %wyjscie z petli po przekroczeniu przedzialu

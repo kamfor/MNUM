@@ -11,16 +11,13 @@ function zeropoint = secant(fun,l,r,iter)
     fb = feval(fun,b);
     dx = fb * (b-a) / (fb-fa);
     xm = b-dx;
-    if(isnan(xm))
+    if(isnan(new))
         return
     end
     a = b;
     b = xm;
     fa = fb;
     zeropoint = b;
-    fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,dx);
-    if(fb == 0)
-        return
-    end
+    fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,fm);
   end
 end

@@ -30,4 +30,4 @@ for j=1:n
   if(x1>5)
     break; %wyjscie z petli po przekroczeniu przedzialu
   end
-end 
+end

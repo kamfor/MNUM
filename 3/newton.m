@@ -4,14 +4,15 @@ function zeropoint = newton(fun,l,iter)
 %			fun - funkcja 
 %			iter - maksymalna liczba uteracji
 %Dane wyjsciowe: 	zerospoints - wektor miejsc zerowych funkcji na danym przedziale
-
-  for i = 1 : iter
-    [fold, fpold] = feval(fun,l);
+    
+  x0 = l; 
+  for k = 1:iter
+    [fold, fpold] = feval(fun,x0);
     dx = fold / fpold;
-    l = l - dx;
-    if ( nargout == 1 )
-    zeropoint = x0;
-    return
+    x0 = x0 - dx;
+    fprintf('%3d %12.16f %12.16f %12.3e\n',k,x0,dx,fold);
+    if(fold == 0)
+        return
     end
   end
   if ( nargout == 1 )

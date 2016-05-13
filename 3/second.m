@@ -6,8 +6,8 @@ plot(x, df(x,0), 'b','LineWidth', 2)
 grid on
 axis([-5 2 -100 50])
 
-for i = -5:3
-    result(:,i+6) = muller(i,40);
+for i = -5:4
+    result(i+6,:) = muller(i,50);
 end
 
 disp(result); 

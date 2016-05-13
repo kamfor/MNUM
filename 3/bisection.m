@@ -1,5 +1,5 @@
 %funkcja wyznaczajaca zera funkcji metoda bisekcji
-function zeropoint = bisection(fun,l,r,iter)
+function bzeropoint = bisection(fun,l,r,iter)
 %Dane wejsciowe:	l,r - lewai prawa sterona przedzialu poszukiwan
 %			fun - funkcja 
 %			iter - maksymalna liczba uteracji
@@ -23,7 +23,8 @@ function zeropoint = bisection(fun,l,r,iter)
     fb = fm;
     end
   end
-  zeropoint = xm; 
+  bzeropoint = xm; 
+  return
 end
 	
 

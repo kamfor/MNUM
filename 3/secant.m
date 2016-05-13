@@ -1,5 +1,5 @@
 %funkcja obliczajaca zera funkcji metoda siecznych
-function zeropoint = secant(fun,l,r,iter)
+function szeropoint = secant(fun,l,r,iter)
 %Dane wejsciowe:	l.r - lewai prawa sterona przedzialu poszukiwan
 %			fun - funkcja 
 %			iter - maksymalna liczba uteracji
@@ -17,7 +17,7 @@ function zeropoint = secant(fun,l,r,iter)
     a = b;
     b = xm;
     fa = fb;
-    zeropoint = b;
+    szeropoint = b;
     fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,dx);
     if(fb == 0)
         return

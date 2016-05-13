@@ -1,5 +1,5 @@
 %funkcja obliczajaca zera funkcji metoda Newtona
-function zeropoint = newton(fun,l,iter)
+function nzeropoint = newton(fun,l,iter)
 %Dane wejsciowe:	l.r - lewai prawa sterona przedzialu poszukiwan
 %			fun - funkcja 
 %			iter - maksymalna liczba uteracji
@@ -16,7 +16,7 @@ function zeropoint = newton(fun,l,iter)
     end
   end
   if ( nargout == 1 )
-   zeropoint = x0;
+   nzeropoint = x0;
   end
 end
   

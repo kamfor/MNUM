@@ -62,6 +62,16 @@ c) metody Newtona\\
 
 \subsection{Metoda bisekcji}
 \subsubsection{Opis teoretyczny}
+Teoretyczny zarys metody bisekcji możemy przybliżyć poniższym algorytmem:
+\begin{enumerate}
+  \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy środek przedziału $c_{n}$\\
+  $c_{n} = \frac{a_{n}+b_{n}}{2}$\\
+  i obliczamy wartość $f(x)$ w tym punkcie. 
+  \item Obliczamy iloczyny $f(a_{n})*f(c_{n})$ oraz $f(b_{n})*f(c_{n})$ I jako nowy przedział $[a_{n=1},b_{n+1}$
+  wybieramy ardumenty tego iliczynu którego wartość jest ujemna. 
+\end{enumerate} 
+Kroki te powtarzamy aż do mementu uzyckania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. W przypadku "płaskich" funkcji warto też konrtolować długość rozpatrywanego przedziału. 
+Dokładność wyniku zalezy jedynie od ilośći iteracji dlatego metoda jest zbierzna liniowo z ilorazem zbierzności 0,5. Co czyni ją stosunkowo wolno zbierzną w przypadku wyboru szerokiego przedziału początkowego. 
 
 
 
@@ -72,6 +82,13 @@ c) metody Newtona\\
 
 \subsection{Metoda siecznych}
 \subsubsection{Opis teoretyczny}
+Teoretyczny zarys metody siecznych możemy przybliżyć poniższym algorytmem:
+\begin{enumerate}
+  \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy punkt $x_{n}$ jako miejcse przecięcia siecznej funkcji przechodzącej prze punkty $[a_{n},b_{n}]$ gdzie $x_{n}=$
+  \item Nastpepnie nowy przedział oznaczamy $x_{n+1}=$ 
+\end{enumerate} 
+Kroki te powtarzamy aż do mementu uzyckania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbierzności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
+Jwst więc ona dużo szybsza od metody bisekcji, jednak jest zbierzna jedynie lokalnie. Jeżeli ine zadbamy o wybór odpowiedniego przedziału początkowego może okazać się wogóle nie zbieżna. 
 
 
 \subsubsection{Realizacja w programie Matlab}

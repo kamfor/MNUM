@@ -74,7 +74,7 @@ Teoretyczny zarys metody bisekcji możemy przybliżyć poniższym algorytmem:
   wybieramy argumenty tego iliczynu którego wartość jest ujemna. 
 \end{enumerate} 
 Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. W przypadku "płaskich"  funkcji warto też konrtolować długość rozpatrywanego przedziału. 
-Dokładność wyniku zalezy jedynie od ilości iteracji dlatego metoda jest zbierzna liniowo z ilorazem zbierzności 0.5, co czyni ją stosunkowo wolno zbierzną w przypadku wyboru szerokiego przedziału początkowego. 
+Dokładność wyniku zalezy jedynie od ilości iteracji dlatego metoda jest zbieżna liniowo z ilorazem zbieżności 0.5, co czyni ją stosunkowo wolno zbieżną w przypadku wyboru szerokiego przedziału początkowego. 
 
 
 
@@ -117,8 +117,8 @@ Teoretyczny zarys metody siecznych możemy przybliżyć poniższym algorytmem:
   \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy punkt $\delta x_{n}$ jako miejcse przecięcia siecznej funkcji przechodzącej prze punkty $[a_{n},b_{n}]$ gdzie $\delta x_{n}=\frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})}$
   \item Nastpepnie nowy przedział oznaczamy $x_{n+1}=x_{n}-\delta x_{n}$ 
 \end{enumerate} 
-Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbierzności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
-Jest więc ona dużo szybsza od metody bisekcji, jednak jest zbierzna jedynie lokalnie. Jeżeli ine zadbamy o wybór odpowiedniego przedziału początkowego może okazać się w ogóle nie zbieżna.
+Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbieżności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
+Jest więc ona dużo szybsza od metody bisekcji, jednak jest zbieżna jedynie lokalnie. Jeżeli ine zadbamy o wybór odpowiedniego przedziału początkowego może okazać się w ogóle nie zbieżna.
 
 
 \subsubsection{Realizacja w programie Matlab}
@@ -165,7 +165,7 @@ Prowadzi to do zależności iteracyjnej danej następującym wzorem:\\
 \begin{center}
 $x_{n+1} = x_{n}-\frac{f(x_{n})}{f'(x_{n})}$
 \end{center}
-Metoda Newtona jest zbierzna jedynie lokalnie, ponieważ wyznaczjąc styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbierzności. Dla przypadków pochodnej większej od zera metoda jest zbierzna kwadratowo. Rząd zbierzności wynosi 2.
+Metoda Newtona jest zbieżna jedynie lokalnie, ponieważ wyznaczjąc styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbieżności. Dla przypadków pochodnej większej od zera metoda jest zbieżna kwadratowo. Rząd zbieżności wynosi 2.
 
 \subsubsection{Realizacja w programie Matlab}
 \begin{lstlisting}
@@ -454,7 +454,7 @@ end
 
 
 \subsection{Wnioski}
-Analizując wykres funkcji danej w zadanu możemy wstępnie okreslić miejsca zerowe i zachowanie funkcji w ich otoczeniu. Rozpatrywana funkcja posiada dwa rodzaje miejsc zerowych które mają wpływ na szybkość ich wyznaczania, ponieważ w otoczeniu jednego z nich funkcja jest nachylona pod małym kątem do osi X natomiast w przypadku drugiego miejsca obserwujemy duży lokakny przyrost, więc wykres funkcji jest mniej odchylony od osi pionowej. Jak wynika z otrzymanych rezultatów metoda bisekcji w obu przypadkach potrzebowała stosunkowo dużej ilości iteracji aby osiągnać zadaną dokładność. Jej zaletami jest niewrażliwość na szczególne zachowania funkcji więc mimo słabej zbierzności nadaje się do wyznaczania miejsc zerowych funkcji których przebiegu nie znamy w celu zabezpieczenia przez niezbierznością. Metoda siecznych potrzebowała około 10 iteracji aby dojść do wyniku. W przypadku wyznaczania miejsca zerowego w otoczeniu którego mamy doczynienia z płaską funkcją, jak miało to miejsze w drugim miejscu zerowym, metoda okazuje się najlepsza spośród wszystkich zastosowanych. Jej wadą jest niezbieżność w przypadku gdy sieczna przetnie wykres funkcji w większej ilości miejsc niż 2. Dlatego najeży wybierać wąskie przedziały startowe co zostsało uczynine w rozwiązaniu. Ostatnią wypróbowaną metodą jest metoda Newtona (stycznych), która w przypadku dobrego uwarunkowania (wąski przedział, brak odcinków o pochodniej mniejszej niż zero w przedziale startowym) okazuje się być najszybsza (w zadaniu ok 3-4 iteracje). Wynika to z najwyższego współczynnika zbierzności. W przypadku wyznaczania drugiego miejsca zerowego metodą Newtona rozpatrywany przedział zawierał fragment funkcji z ujemną pochodną. Spowodowało to zwiększenie liczby iteracji dla metody Newtona co można uznać za przypadek kiedy funkcja zawiodła. 
+Analizując wykres funkcji danej w zadanu możemy wstępnie okreslić miejsca zerowe i zachowanie funkcji w ich otoczeniu. Rozpatrywana funkcja posiada dwa rodzaje miejsc zerowych które mają wpływ na szybkość ich wyznaczania, ponieważ w otoczeniu jednego z nich funkcja jest nachylona pod małym kątem do osi X natomiast w przypadku drugiego miejsca obserwujemy duży lokalny przyrost, więc wykres funkcji jest mniej odchylony od osi pionowej. Jak wynika z otrzymanych rezultatów metoda bisekcji w obu przypadkach potrzebowała stosunkowo dużej ilości iteracji aby osiągnać zadaną dokładność. Jej zaletami jest niewrażliwość na szczególne zachowania funkcji więc mimo słabej zbieżności nadaje się do wyznaczania miejsc zerowych funkcji których przebiegu nie znamy w celu zabezpieczenia przez niezbieżnością. Metoda siecznych potrzebowała około 10 iteracji aby dojść do wyniku. W przypadku wyznaczania miejsca zerowego w otoczeniu którego mamy doczynienia z płaską funkcją, jak miało to miejsze w drugim miejscu zerowym, metoda okazuje się najlepsza spośród wszystkich zastosowanych. Jej wadą jest niezbieżność w przypadku gdy sieczna przetnie wykres funkcji w większej ilości miejsc niż 2. Dlatego najeży wybierać wąskie przedziały startowe co zostało uczynione w rozwiązaniu. Ostatnią wypróbowaną metodą jest metoda Newtona (stycznych), która w przypadku dobrego uwarunkowania (wąski przedział, brak odcinków o pochodniej mniejszej niż zero w przedziale startowym) okazuje się być najszybsza (w zadaniu ok 3-4 iteracje). Wynika to z najwyższego współczynnika zbieżności. W przypadku wyznaczania drugiego miejsca zerowego metodą Newtona rozpatrywany przedział zawierał fragment funkcji z ujemną pochodną. Spowodowało to zwiększenie liczby iteracji dla metody Newtona co można uznać za przypadek kiedy funkcja zawiodła. 
 
 
 \section{Zadanie 2}
@@ -497,7 +497,7 @@ Przeprowadzając iteracyjne przybliżanie zera wybieramy pierwiastek o mniejszym
 \begin{center}
 $x_{k+1} = x_{k}+min(|z_{1}|,|z_{2}|)$
 \end{center}
-Metoda Mullera podobnie jak Newtona jest zbierzna jedynie lokalnie z rzędem zbierzności 1.84. Jest szybsza od metody siecznych i niewiele wolniejsza od metody Newtona. Znaczącą różnicą jest implementacja pozwalająca na wyznaczanie zespolonych zer funkcji. 
+Metoda Mullera podobnie jak Newtona jest zbieżna jedynie lokalnie z rzędem zbieżności 1.84. Jest szybsza od metody siecznych i niewiele wolniejsza od metody Newtona. Znaczącą różnicą jest implementacja pozwalająca na wyznaczanie zespolonych zer funkcji. 
 
 
 \subsection{Realizacja w programie Matlab}

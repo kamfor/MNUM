@@ -11,7 +11,7 @@ function bzeropoint = bisection(fun,l,r,iter)
   for k=1:iter
     xm = a + 0.5*(b-a);    %  Poprawne obliczenie srodka przedzialu
     fm = feval(fun,xm);      %  f(x) w srodku przedzialu
-    fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,fm);
+    fprintf('%3d    [%12.10f;%12.10f]	%12.16f     %12.3e\n',k,a,b,xm,fm);
     if(fm == 0)
         return
     end

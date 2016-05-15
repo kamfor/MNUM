@@ -7,7 +7,7 @@ grid on
 axis([-5 2 -100 50])
 
 for i = -5:4
-    result(i+6,:) = muller(i,50);
+    result(i+6,:) = muller(i,6);
 end
 
 disp(result); 

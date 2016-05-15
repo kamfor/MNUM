@@ -18,7 +18,7 @@ function szeropoint = secant(fun,l,r,iter)
     b = xm;
     fa = fb;
     szeropoint = b;
-    fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,dx);
+    fprintf('%3d	[%12.10f;%12.10f]   %12.16f     %12.3e\n',k,a,b,xm,fb);
     if(fb == 0) %dodatkowy warunek zakonczenia wykonywania
         return
     end

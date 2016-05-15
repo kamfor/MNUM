@@ -10,7 +10,7 @@ function nzeropoint = newton(fun,l,iter)
     [fold, fpold] = feval(fun,x0); 
     dx = fold / fpold; %wyznaczenie przyrostu funkcji
     x0 = x0 - dx;
-    fprintf('%3d %12.16f %12.16f %12.3e\n',k,x0,dx,fold);
+    fprintf('%3d	%12.10f     %12.16f     %12.3e \n',k,dx,x0,fold);
     if(fold == 0)
         return
     end

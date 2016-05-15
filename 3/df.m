@@ -15,6 +15,5 @@ function [value] = df(x,n)
     else
         value = 0; 
     end
-
 end
 

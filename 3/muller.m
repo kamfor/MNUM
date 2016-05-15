@@ -16,7 +16,7 @@ function [z] = muller(x,n)
             zmin = -2*df(x,0)/z2;
         end 
         x = x+zmin; 
-        %z(i) = x;
+        fprintf('%d     %f      %f\n ',i,x,zmin);
     end
     z = x; 
 end

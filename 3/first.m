@@ -4,7 +4,14 @@ clear;
 x  = -5: .1 : 5;
 plot(x, fun(x), 'b','LineWidth', 2)
 grid on
-axis([-5 5 -150 150])
+axis([-5 5 -150 50])
+hold on;
+plot([-1 -1], [-150 50],'r-');
+plot([1.1 1.1], [-150 50],'r-');
+plot([1.9 1.9], [-150 50],'g-');
+plot([4 4], [-150 50],'g-');
+plot(0.2397479765971350,0,'.','MarkerSize',24,'MarkerEdge','k');
+plot(2.8270409098836571,0,'.','MarkerSize',24,'MarkerEdge','k');
 
 n=100; 
 x1 = -1; 

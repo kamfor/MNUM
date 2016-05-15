@@ -1,9 +1,9 @@
 %funkcja wyznaczajaca zera funkcji metoda bisekcji
 function bzeropoint = bisection(fun,l,r,iter)
-%Dane wejsciowe:	l,r - lewai prawa sterona przedzialu poszukiwan
+%Dane wejsciowe:	l,r - lewa i prawa sterona przedzialu poszukiwan
 %			fun - funkcja 
 %			iter - maksymalna liczba uteracji
-%Dane wyjsciowe: 	zerospoints - wektor miejsc zerowych funkcji na danym przedziale
+%Dane wyjsciowe: zerospoint - wyznaczone miejsce zerowe
   a = l; 
   b = r;
   fa =feval(fun,a);     %  Wartosci poczatkowe f(a) i f(b)
@@ -16,11 +16,14 @@ function bzeropoint = bisection(fun,l,r,iter)
         return
     end
     if sign(fm)==sign(fa)    %  Zero lezy w przedziale [xm,b], zamiana a
-      a = xm;
-      fa = fm;
+        a = xm;
+        fa = fm;
     else                     %  Zero lezy w przedziale [a,xm], zamiana b
-    b = xm;
-    fb = fm;
+        b = xm;
+        fb = fm;
+    end
+    if(fm == 0) %dodatkowy warunek zakonczenia wykonywania
+        return
     end
   end
   bzeropoint = xm; 

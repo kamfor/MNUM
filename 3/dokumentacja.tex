@@ -77,7 +77,34 @@ Dokładność wyniku zalezy jedynie od ilośći iteracji dlatego metoda jest zbi
 
 \subsubsection{Realizacja w programie Matlab}
 \begin{lstlisting}
-
+%funkcja wyznaczajaca zera funkcji metoda bisekcji
+function bzeropoint = bisection(fun,l,r,iter)
+%Dane wejsciowe:	l,r - lewa i prawa sterona przedzialu poszukiwan
+%			fun - funkcja 
+%			iter - maksymalna liczba uteracji
+%Dane wyjsciowe: zerospoint - wyznaczone miejsce zerowe
+  a = l; 
+  b = r;
+  fa =feval(fun,a);     %  Wartosci poczatkowe f(a) i f(b)
+  fb =feval(fun,b);
+  for k=1:iter
+    xm = a + 0.5*(b-a);    %  Poprawne obliczenie srodka przedzialu
+    fm = feval(fun,xm);      %  f(x) w srodku przedzialu
+    fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,fm);
+    if(fm == 0)
+        return
+    end
+    if sign(fm)==sign(fa)    %  Zero lezy w przedziale [xm,b], zamiana a
+        a = xm;
+        fa = fm;
+    else                     %  Zero lezy w przedziale [a,xm], zamiana b
+        b = xm;
+        fb = fm;
+    end
+  end
+  bzeropoint = xm; 
+  return
+end
 \end{lstlisting}
 
 \subsection{Metoda siecznych}
@@ -93,16 +120,74 @@ Jwst więc ona dużo szybsza od metody bisekcji, jednak jest zbierzna jedynie lo
 
 \subsubsection{Realizacja w programie Matlab}
 \begin{lstlisting}
-
+%funkcja obliczajaca zera funkcji metoda siecznych
+function szeropoint = secant(fun,l,r,iter)
+%Dane wejsciowe:	l.r - lewa i prawa sterona przedzialu poszukiwan
+%			fun - funkcja 
+%			iter - maksymalna liczba uteracji
+%Dane wyjsciowe: zerospoint - wwyznaczone miejsce zerowe
+  a = l;
+  b = r;
+  fa = feval(fun,a); %wartosc funkcji w punkcie start.
+  for k = 1:iter
+    fb = feval(fun,b);
+    dx = fb * (b-a) / (fb-fa); %wyznaczenie przeciecia sieczna
+    xm = b-dx; %zawezenie przedzialu
+    if(isnan(xm))
+        return
+    end
+    a = b;
+    b = xm;
+    fa = fb;
+    szeropoint = b;
+    fprintf('%3d %12.16f %12.16f %12.16f %12.3e\n',k,a,xm,b,dx);
+    if(fb == 0) %dodatkowy warunek zakonczenia wykonywania
+        return
+    end
+  end
+end
 \end{lstlisting}
 
 \subsection{Metoda Newtona}
 \subsubsection{Opis teoretyczny}
-
+Metoda Newtona polega na wyznaczeniu cześciowego (uciętego) rozwinięcia w szereg Taylora danej funkcji, które możemy trakować jak liniowe przybliżenie funkcji według wzoru:\\
+\\
+$f(x) \approx f(x_{n})+f'(x_{n})(x-x_{n})$\\
+\\
+Nastepnie wyznaczamy koljene punkty iteracji poprzez przywórnanie do zera otrzymanej aroksymacji:\\
+\\
+$f(x_{n})+f'(x_{n})(x_{n+1}-x_{n}) = 0$\\
+\\
+Prowadzi to do zależności iteracyjnej danej następującym wzorem:\\
+\\
+$x_{n+1} = x_{n}-\frac{f(x_{n})}{f'(x_{n})}$\\
+\\
+Metoda Newtona jest zbierzna jedynie lokalnie ponieważ wyznaczjąc styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbierzności. Dla przypadków pochodnej większej od zera metoda jest zbierzna kwadratowo. Rząd zbierzności wynosi 2. Dlatego nadaje się dla stromych funkcji. 
 
 \subsubsection{Realizacja w programie Matlab}
 \begin{lstlisting}
-
+%funkcja obliczajaca zera funkcji metoda Newtona
+function nzeropoint = newton(fun,l,iter)
+%Dane wejsciowe:	l prawa sterona przedzialu poszukiwan
+%			fun - funkcja 
+%			iter - maksymalna liczba uteracji
+%Dane wyjsciowe: zerospoint - wyznaczone miejsce zerowe
+    
+  x0 = l; 
+  for k = 1:iter
+    [fold, fpold] = feval(fun,x0); 
+    dx = fold / fpold; %wyznaczenie przyrostu funkcji
+    x0 = x0 - dx;
+    fprintf('%3d %12.16f %12.16f %12.3e\n',k,x0,dx,fold);
+    if(fold == 0)
+        return
+    end
+	if fold==0 %dodatkowy warunek zatrzumania
+        nzeropoint = x0;
+        break; 
+     end
+  end
+end
 \end{lstlisting}
 
 \subsection{Analiza danych wejściowych}
@@ -112,12 +197,48 @@ Poniżej wykres funkcji z zaznaczonymi przedziałami izolacji wyznaczonymi przez
 
 \subsection{Skrypt generujący rozwiązanie zadania w programie Matlab}
 \begin{lstlisting}
+%Realizacja zadania 1
+clear; 
+%Generowanie wykresu funkcji aby sprawdzic poprwanosc otrzymanych rozwiazan 
+x  = -5: .1 : 5;
+plot(x, fun(x), 'b','LineWidth', 2)
+grid on
+axis([-5 5 -150 150])
 
+n=100; 
+x1 = -1; 
+x2 = 0; 
+
+%wyznaczanie przedzialow izolacji na podstawie wkryptu MNUM
+for k=1:2
+    for j=1:n
+        if fun(x1)*fun(x2)<0
+            a = x1;
+            b = x2;
+            fprintf('Wyniki dla %d miejsca zerowego w przedziale [%d,%d]\n',k,a,b);
+            bisection('fun',a,b,100);
+            secant('fun',a,b,100);
+            newton('fun',a,100);
+            x1 = 3; 
+            x2 = 4; 
+            break;
+        elseif abs(fun(x1))<abs(fun(x2))
+            x1 = x1+1.1*(x1-x2);
+        else
+            x2 = x2+1.1*(x2-x1);
+        end
+        if(x1>5)&&(x2<(-5))
+            break; %wyjscie z petli po przekroczeniu przedzialu
+        end
+    end
+end
 \end{lstlisting}
 \vspace{1cm}
 
 
 \subsection{Wyniki}
+%wykres 
+%tbelka
 
 
 \subsection{Wnioski}

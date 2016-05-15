@@ -2,21 +2,21 @@
 clear; 
 %Generowanie wykresu funkcji aby sprawdzic poprwanosc otrzymanych rozwiazan 
 x  = -5: .1 : 5;
-
-%plot(x, fun(x), 'b','LineWidth', 2)
-%grid on
-%axis([-5 5 -150 150])
+plot(x, fun(x), 'b','LineWidth', 2)
+grid on
+axis([-5 5 -150 150])
 
 n=100; 
 x1 = -1; 
 x2 = 0; 
 
-%wyznaczanie przedzialow izolacji
+%wyznaczanie przedzialow izolacji na podstawie wkryptu MNUM
 for k=1:2
     for j=1:n
         if fun(x1)*fun(x2)<0
             a = x1;
             b = x2;
+            fprintf('Wyniki dla %d miejsca zerowego w przedziale [%d,%d]\n',k,a,b);
             bisection('fun',a,b,100);
             secant('fun',a,b,100);
             newton('fun',a,100);

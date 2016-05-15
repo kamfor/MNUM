@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[polish]{babel}
 \usepackage{polski}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{amsfonts}
@@ -50,11 +51,11 @@
 \section{Zadanie 1}
 
 \subsection{Polecenie}
-Proszę znaleźć wszystkie zera funkcji\\
-\\
-{$f(x) = 1.4*sin(x)-e^{x}=6*x-0.5$}\\
-\\
-w przedziale $[-5,5]$, używając dla każdego każdego zera programu z implementacją \\
+Proszę znaleźć wszystkie zera funkcji
+\begin{center}
+$f(x) = 1.4*sin(x)-e^{x}=6*x-0.5$
+\end{center}
+w przedziale $[-5,5]$, używając dla każdego zera programu z implementacją \\
 a) metody bisekcji\\
 b) metody siecznych\\
 c) metody Newtona\\
@@ -65,13 +66,15 @@ c) metody Newtona\\
 Teoretyczny zarys metody bisekcji możemy przybliżyć poniższym algorytmem:
 \begin{enumerate}
   \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy środek przedziału $c_{n}$\\
-  $c_{n} = \frac{a_{n}+b_{n}}{2}$\\
+  	\begin{center}
+  	$c_{n} = \frac{a_{n}+b_{n}}{2}$\\
+	\end{center}
   i obliczamy wartość $f(x)$ w tym punkcie. 
-  \item Obliczamy iloczyny $f(a_{n})*f(c_{n})$ oraz $f(b_{n})*f(c_{n})$ I jako nowy przedział $[a_{n=1},b_{n+1}$
-  wybieramy ardumenty tego iliczynu którego wartość jest ujemna. 
+  \item Obliczamy iloczyny $f(a_{n})*f(c_{n})$ oraz $f(b_{n})*f(c_{n})$ i jako nowy przedział $[a_{n=1},b_{n+1}]$
+  wybieramy argumenty tego iliczynu którego wartość jest ujemna. 
 \end{enumerate} 
-Kroki te powtarzamy aż do mementu uzyckania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. W przypadku "płaskich" funkcji warto też konrtolować długość rozpatrywanego przedziału. 
-Dokładność wyniku zalezy jedynie od ilośći iteracji dlatego metoda jest zbierzna liniowo z ilorazem zbierzności 0,5. Co czyni ją stosunkowo wolno zbierzną w przypadku wyboru szerokiego przedziału początkowego. 
+Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. W przypadku "płaskich"  funkcji warto też konrtolować długość rozpatrywanego przedziału. 
+Dokładność wyniku zalezy jedynie od ilości iteracji dlatego metoda jest zbierzna liniowo z ilorazem zbierzności 0.5, co czyni ją stosunkowo wolno zbierzną w przypadku wyboru szerokiego przedziału początkowego. 
 
 
 
@@ -111,11 +114,11 @@ end
 \subsubsection{Opis teoretyczny}
 Teoretyczny zarys metody siecznych możemy przybliżyć poniższym algorytmem:
 \begin{enumerate}
-  \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy punkt $x_{n}$ jako miejcse przecięcia siecznej funkcji przechodzącej prze punkty $[a_{n},b_{n}]$ gdzie $x_{n}=$
-  \item Nastpepnie nowy przedział oznaczamy $x_{n+1}=$ 
+  \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy punkt $\delta x_{n}$ jako miejcse przecięcia siecznej funkcji przechodzącej prze punkty $[a_{n},b_{n}]$ gdzie $\delta x_{n}=\frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})}$
+  \item Nastpepnie nowy przedział oznaczamy $x_{n+1}=x_{n}-\delta x_{n}$ 
 \end{enumerate} 
-Kroki te powtarzamy aż do mementu uzyckania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbierzności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
-Jwst więc ona dużo szybsza od metody bisekcji, jednak jest zbierzna jedynie lokalnie. Jeżeli ine zadbamy o wybór odpowiedniego przedziału początkowego może okazać się wogóle nie zbieżna. 
+Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbierzności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
+Jest więc ona dużo szybsza od metody bisekcji, jednak jest zbierzna jedynie lokalnie. Jeżeli ine zadbamy o wybór odpowiedniego przedziału początkowego może okazać się w ogóle nie zbieżna.
 
 
 \subsubsection{Realizacja w programie Matlab}
@@ -150,19 +153,19 @@ end
 
 \subsection{Metoda Newtona}
 \subsubsection{Opis teoretyczny}
-Metoda Newtona polega na wyznaczeniu cześciowego (uciętego) rozwinięcia w szereg Taylora danej funkcji, które możemy trakować jak liniowe przybliżenie funkcji według wzoru:\\
-\\
-$f(x) \approx f(x_{n})+f'(x_{n})(x-x_{n})$\\
-\\
-Nastepnie wyznaczamy koljene punkty iteracji poprzez przywórnanie do zera otrzymanej aroksymacji:\\
-\\
-$f(x_{n})+f'(x_{n})(x_{n+1}-x_{n}) = 0$\\
-\\
+Metoda Newtona polega na wyznaczeniu częściowego (uciętego) rozwinięcia w szereg Taylora danej funkcji, które możemy trakować jak liniowe przybliżenie funkcji według wzoru:\
+  	\begin{center}
+  	$f(x) \approx f(x_{n})+f'(x_{n})(x-x_{n})$
+	\end{center}
+Nastepnie wyznaczamy kolejne punkty iteracji poprzez przywórnanie do zera otrzymanej aproksymacji:\\
+\begin{center}
+$f(x_{n})+f'(x_{n})(x_{n+1}-x_{n}) = 0$
+\end{center}
 Prowadzi to do zależności iteracyjnej danej następującym wzorem:\\
-\\
-$x_{n+1} = x_{n}-\frac{f(x_{n})}{f'(x_{n})}$\\
-\\
-Metoda Newtona jest zbierzna jedynie lokalnie ponieważ wyznaczjąc styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbierzności. Dla przypadków pochodnej większej od zera metoda jest zbierzna kwadratowo. Rząd zbierzności wynosi 2. Dlatego nadaje się dla stromych funkcji. 
+\begin{center}
+$x_{n+1} = x_{n}-\frac{f(x_{n})}{f'(x_{n})}$
+\end{center}
+Metoda Newtona jest zbierzna jedynie lokalnie, ponieważ wyznaczjąc styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbierzności. Dla przypadków pochodnej większej od zera metoda jest zbierzna kwadratowo. Rząd zbierzności wynosi 2.
 
 \subsubsection{Realizacja w programie Matlab}
 \begin{lstlisting}
@@ -191,8 +194,13 @@ end
 \end{lstlisting}
 
 \subsection{Analiza danych wejściowych}
-W celu wyznaczenia przedziałów izolacji miejsc zerowych został wykorsyztany algorytm opisany w skrypcie prof. Tatjewskiego. Wstępna analiza danych rozpoczyna się od wygenerowania wykresu funkcji w danym przedziale i na tej podstawie wyboru przedziału startowego dla algorytmu. Nastepnie w podanycm przedziale w pętli badany jest znak iloczynu funkcji w punktach graniczynych. Jezeli jest on ujemny, oznacza to występowanie miejsca zerowego w danycm przedziale. Jeżeli nie to przedział jest rozszerzany do momentu przekroczenia przedziału danego w zadaniu. 
+W celu wyznaczenia przedziałów izolacji miejsc zerowych został wykorsyztany algorytm opisany w skrypcie prof. Tatjewskiego. Wstępna analiza danych rozpoczyna się od wygenerowania wykresu funkcji w danym przedziale i na tej podstawie wyboru przedziału startowego dla algorytmu. Nastepnie w podanycm przedziale w pętli badany jest znak iloczynu funkcji w punktach graniczynych. Jezeli jest on ujemny, oznacza to występowanie miejsca zerowego w danycm przedziale. Jeżeli nie, to przedział jest rozszerzany do momentu przekroczenia przedziału danego w zadaniu. 
 Poniżej wykres funkcji z zaznaczonymi przedziałami izolacji wyznaczonymi przez algorytm. 
+
+\begin{figure}[H]
+\caption{Wykres z zaznaczonymi przedziałami startowymi}
+\includegraphics[width=\textwidth]{1}
+\end{figure}
 
 
 \subsection{Skrypt generujący rozwiązanie zadania w programie Matlab}
@@ -237,9 +245,84 @@ end
 
 
 \subsection{Wyniki}
-%wykres 
-%tbelka
-\begin{table}[]
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{llll}
+\hline
+\multicolumn{4}{c}{\textbf{Metoda siecznych pierwsze miejsce zerowe}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
+\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{{[}1.1000000000;0.3637775411{]}} & \multicolumn{1}{l|}{0.3637775410734196} & \multicolumn{1}{l|}{7.362e-01} \\ \hline
+\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{{[}0.3637775411;0.2120880091{]}} & \multicolumn{1}{l|}{0.2120880090516735} & \multicolumn{1}{l|}{1.517e-01} \\ \hline
+\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{{[}0.2120880091;0.2402303125{]}} & \multicolumn{1}{l|}{0.2402303124756739} & \multicolumn{1}{l|}{-2.814e-02} \\ \hline
+\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{{[}0.2402303125;0.2397497010{]}} & \multicolumn{1}{l|}{0.2397497010094280} & \multicolumn{1}{l|}{4.806e-04} \\ \hline
+\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{{[}0.2397497010;0.2397479765{]}} & \multicolumn{1}{l|}{0.2397479764875909} & \multicolumn{1}{l|}{1.725e-06} \\ \hline
+\multicolumn{1}{|l|}{6} & \multicolumn{1}{l|}{{[}0.2397479765;0.2397479766{]}} & \multicolumn{1}{l|}{0.2397479765971351} & \multicolumn{1}{l|}{-1.095e-10} \\ \hline
+\multicolumn{1}{|l|}{7} & \multicolumn{1}{l|}{{[}0.2397479766;0.2397479766{]}} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{3.647e-17} \\ \hline
+\multicolumn{1}{|l|}{8} & \multicolumn{1}{l|}{{[}0.2397479766;0.2397479766{]}} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{0.000e+00} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{llll}
+\hline
+\multicolumn{4}{c}{\textbf{Metoda siecznych drugie miejsce zerowe}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
+\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{{[}4.0000000000;2.2085621561{]}} & \multicolumn{1}{l|}{2.2085621561012472} & \multicolumn{1}{l|}{1.791e+00} \\ \hline
+\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{{[}2.2085621561;2.4401148217{]}} & \multicolumn{1}{l|}{2.4401148217298374} & \multicolumn{1}{l|}{-2.316e-01} \\ \hline
+\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{{[}2.4401148217;3.1268105849{]}} & \multicolumn{1}{l|}{3.1268105848860621} & \multicolumn{1}{l|}{-6.867e-01} \\ \hline
+\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{{[}3.1268105849;2.7431506522{]}} & \multicolumn{1}{l|}{2.7431506521755535} & \multicolumn{1}{l|}{3.837e-01} \\ \hline
+\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{{[}2.7431506522;2.8107252731{]}} & \multicolumn{1}{l|}{2.8107252730503189} & \multicolumn{1}{l|}{-6.757e-02} \\ \hline
+\multicolumn{1}{|l|}{6} & \multicolumn{1}{l|}{{[}2.8107252731;2.8280523947{]}} & \multicolumn{1}{l|}{2.8280523946681111} & \multicolumn{1}{l|}{-1.733e-02} \\ \hline
+\multicolumn{1}{|l|}{7} & \multicolumn{1}{l|}{{[}2.8280523947;2.8270291416{]}} & \multicolumn{1}{l|}{2.8270291416146467} & \multicolumn{1}{l|}{1.023e-03} \\ \hline
+\multicolumn{1}{|l|}{8} & \multicolumn{1}{l|}{{[}2.8270291416;2.8270409015{]}} & \multicolumn{1}{l|}{2.8270409014519227} & \multicolumn{1}{l|}{-1.176e-05} \\ \hline
+\multicolumn{1}{|l|}{9} & \multicolumn{1}{l|}{{[}2.8270409015;2.8270409099{]}} & \multicolumn{1}{l|}{2.8270409098837272} & \multicolumn{1}{l|}{-8.432e-09} \\ \hline
+\multicolumn{1}{|l|}{10} & \multicolumn{1}{l|}{{[}2.8270409099;2.8270409099{]}} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{7.003e-14} \\ \hline
+\multicolumn{1}{|l|}{11} & \multicolumn{1}{l|}{{[}2.8270409099;2.8270409099{]}} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{-0.000e+00} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{llll}
+\hline
+\multicolumn{4}{c}{\textbf{Metoda Newtona pierwsze miejsce zerowe}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
+\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{-1.2594323665} & \multicolumn{1}{l|}{0.2594323664525493} & \multicolumn{1}{l|}{-8.046e+00} \\ \hline
+\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{0.0197367824} & \multicolumn{1}{l|}{0.2396955840431176} & \multicolumn{1}{l|}{1.195e-01} \\ \hline
+\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{-0.0000523922} & \multicolumn{1}{l|}{0.2397479762357552} & \multicolumn{1}{l|}{-3.190e-04} \\ \hline
+\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{-0.0000000004} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{-2.200e-09} \\ \hline
+\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{0.0000000000} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{0.000e+00} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{llll}
+\hline
+\multicolumn{4}{c}{\textbf{Metoda Newtona drugie miejsce zerowe}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
+\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{-4.8651088967} & \multicolumn{1}{l|}{6.7651088967106006} & \multicolumn{1}{l|}{5.539e+00} \\ \hline
+\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{0.9610395411} & \multicolumn{1}{l|}{5.8040693556058418} & \multicolumn{1}{l|}{-8.263e+02} \\ \hline
+\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{0.9185069972} & \multicolumn{1}{l|}{4.8855623584001924} & \multicolumn{1}{l|}{-2.980e+02} \\ \hline
+\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{0.8319658399} & \multicolumn{1}{l|}{4.0535965184699823} & \multicolumn{1}{l|}{-1.049e+02} \\ \hline
+\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{0.6650562218} & \multicolumn{1}{l|}{3.3885402966240363} & \multicolumn{1}{l|}{-3.489e+01} \\ \hline
+\multicolumn{1}{|l|}{6} & \multicolumn{1}{l|}{0.4056676310} & \multicolumn{1}{l|}{2.9828726656584705} & \multicolumn{1}{l|}{-1.013e+01} \\ \hline
+\multicolumn{1}{|l|}{7} & \multicolumn{1}{l|}{0.1405409130} & \multicolumn{1}{l|}{2.8423317526851513} & \multicolumn{1}{l|}{-2.126e+00} \\ \hline
+\multicolumn{1}{|l|}{8} & \multicolumn{1}{l|}{0.0151272015} & \multicolumn{1}{l|}{2.8272045512095620} & \multicolumn{1}{l|}{-1.890e-01} \\ \hline
+\multicolumn{1}{|l|}{9} & \multicolumn{1}{l|}{0.0001636224} & \multicolumn{1}{l|}{2.8270409288572882} & \multicolumn{1}{l|}{-2.001e-03} \\ \hline
+\multicolumn{1}{|l|}{10} & \multicolumn{1}{l|}{0.0000000190} & \multicolumn{1}{l|}{2.8270409098836575} & \multicolumn{1}{l|}{-2.320e-07} \\ \hline
+\multicolumn{1}{|l|}{11} & \multicolumn{1}{l|}{0.0000000000} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{-3.553e-15} \\ \hline
+\multicolumn{1}{|l|}{12} & \multicolumn{1}{l|}{-0.0000000000} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{0.000e+00} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
 \centering
 \label{my-label}
 \begin{tabular}{llll}
@@ -302,7 +385,7 @@ end
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \label{my-label}
 \begin{tabular}{llll}
@@ -365,93 +448,20 @@ end
 \end{tabular}
 \end{table}
 
-\begin{table}[]
-\centering
-\label{my-label}
-\begin{tabular}{llll}
-\hline
-\multicolumn{4}{c}{\textbf{Metoda siecznych pierwsze miejsce zerowe}} \\ \hline
-\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
-\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{{[}1.1000000000;0.3637775411{]}} & \multicolumn{1}{l|}{0.3637775410734196} & \multicolumn{1}{l|}{7.362e-01} \\ \hline
-\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{{[}0.3637775411;0.2120880091{]}} & \multicolumn{1}{l|}{0.2120880090516735} & \multicolumn{1}{l|}{1.517e-01} \\ \hline
-\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{{[}0.2120880091;0.2402303125{]}} & \multicolumn{1}{l|}{0.2402303124756739} & \multicolumn{1}{l|}{-2.814e-02} \\ \hline
-\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{{[}0.2402303125;0.2397497010{]}} & \multicolumn{1}{l|}{0.2397497010094280} & \multicolumn{1}{l|}{4.806e-04} \\ \hline
-\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{{[}0.2397497010;0.2397479765{]}} & \multicolumn{1}{l|}{0.2397479764875909} & \multicolumn{1}{l|}{1.725e-06} \\ \hline
-\multicolumn{1}{|l|}{6} & \multicolumn{1}{l|}{{[}0.2397479765;0.2397479766{]}} & \multicolumn{1}{l|}{0.2397479765971351} & \multicolumn{1}{l|}{-1.095e-10} \\ \hline
-\multicolumn{1}{|l|}{7} & \multicolumn{1}{l|}{{[}0.2397479766;0.2397479766{]}} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{3.647e-17} \\ \hline
-\multicolumn{1}{|l|}{8} & \multicolumn{1}{l|}{{[}0.2397479766;0.2397479766{]}} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{0.000e+00} \\ \hline
-\end{tabular}
-\end{table}
 
-\begin{table}[]
-\centering
-\label{my-label}
-\begin{tabular}{llll}
-\hline
-\multicolumn{4}{c}{\textbf{Metoda siecznych drugie miejsce zerowe}} \\ \hline
-\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
-\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{{[}4.0000000000;2.2085621561{]}} & \multicolumn{1}{l|}{2.2085621561012472} & \multicolumn{1}{l|}{1.791e+00} \\ \hline
-\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{{[}2.2085621561;2.4401148217{]}} & \multicolumn{1}{l|}{2.4401148217298374} & \multicolumn{1}{l|}{-2.316e-01} \\ \hline
-\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{{[}2.4401148217;3.1268105849{]}} & \multicolumn{1}{l|}{3.1268105848860621} & \multicolumn{1}{l|}{-6.867e-01} \\ \hline
-\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{{[}3.1268105849;2.7431506522{]}} & \multicolumn{1}{l|}{2.7431506521755535} & \multicolumn{1}{l|}{3.837e-01} \\ \hline
-\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{{[}2.7431506522;2.8107252731{]}} & \multicolumn{1}{l|}{2.8107252730503189} & \multicolumn{1}{l|}{-6.757e-02} \\ \hline
-\multicolumn{1}{|l|}{6} & \multicolumn{1}{l|}{{[}2.8107252731;2.8280523947{]}} & \multicolumn{1}{l|}{2.8280523946681111} & \multicolumn{1}{l|}{-1.733e-02} \\ \hline
-\multicolumn{1}{|l|}{7} & \multicolumn{1}{l|}{{[}2.8280523947;2.8270291416{]}} & \multicolumn{1}{l|}{2.8270291416146467} & \multicolumn{1}{l|}{1.023e-03} \\ \hline
-\multicolumn{1}{|l|}{8} & \multicolumn{1}{l|}{{[}2.8270291416;2.8270409015{]}} & \multicolumn{1}{l|}{2.8270409014519227} & \multicolumn{1}{l|}{-1.176e-05} \\ \hline
-\multicolumn{1}{|l|}{9} & \multicolumn{1}{l|}{{[}2.8270409015;2.8270409099{]}} & \multicolumn{1}{l|}{2.8270409098837272} & \multicolumn{1}{l|}{-8.432e-09} \\ \hline
-\multicolumn{1}{|l|}{10} & \multicolumn{1}{l|}{{[}2.8270409099;2.8270409099{]}} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{7.003e-14} \\ \hline
-\multicolumn{1}{|l|}{11} & \multicolumn{1}{l|}{{[}2.8270409099;2.8270409099{]}} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{-0.000e+00} \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[]
-\centering
-\label{my-label}
-\begin{tabular}{llll}
-\hline
-\multicolumn{4}{c}{\textbf{Metoda Newtona pierwsze miejsce zerowe}} \\ \hline
-\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
-\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{-1.2594323665} & \multicolumn{1}{l|}{0.2594323664525493} & \multicolumn{1}{l|}{-8.046e+00} \\ \hline
-\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{0.0197367824} & \multicolumn{1}{l|}{0.2396955840431176} & \multicolumn{1}{l|}{1.195e-01} \\ \hline
-\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{-0.0000523922} & \multicolumn{1}{l|}{0.2397479762357552} & \multicolumn{1}{l|}{-3.190e-04} \\ \hline
-\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{-0.0000000004} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{-2.200e-09} \\ \hline
-\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{0.0000000000} & \multicolumn{1}{l|}{0.2397479765971350} & \multicolumn{1}{l|}{0.000e+00} \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[]
-\centering
-\label{my-label}
-\begin{tabular}{llll}
-\hline
-\multicolumn{4}{c}{\textbf{Metoda Newtona drugie miejsce zerowe}} \\ \hline
-\multicolumn{1}{|l|}{\textbf{iteracja}} & \multicolumn{1}{l|}{\textbf{przedział}} & \multicolumn{1}{l|}{\textbf{wynik}} & \multicolumn{1}{l|}{\textbf{wartość funkcji}} \\ \hline
-\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{-4.8651088967} & \multicolumn{1}{l|}{6.7651088967106006} & \multicolumn{1}{l|}{5.539e+00} \\ \hline
-\multicolumn{1}{|l|}{2} & \multicolumn{1}{l|}{0.9610395411} & \multicolumn{1}{l|}{5.8040693556058418} & \multicolumn{1}{l|}{-8.263e+02} \\ \hline
-\multicolumn{1}{|l|}{3} & \multicolumn{1}{l|}{0.9185069972} & \multicolumn{1}{l|}{4.8855623584001924} & \multicolumn{1}{l|}{-2.980e+02} \\ \hline
-\multicolumn{1}{|l|}{4} & \multicolumn{1}{l|}{0.8319658399} & \multicolumn{1}{l|}{4.0535965184699823} & \multicolumn{1}{l|}{-1.049e+02} \\ \hline
-\multicolumn{1}{|l|}{5} & \multicolumn{1}{l|}{0.6650562218} & \multicolumn{1}{l|}{3.3885402966240363} & \multicolumn{1}{l|}{-3.489e+01} \\ \hline
-\multicolumn{1}{|l|}{6} & \multicolumn{1}{l|}{0.4056676310} & \multicolumn{1}{l|}{2.9828726656584705} & \multicolumn{1}{l|}{-1.013e+01} \\ \hline
-\multicolumn{1}{|l|}{7} & \multicolumn{1}{l|}{0.1405409130} & \multicolumn{1}{l|}{2.8423317526851513} & \multicolumn{1}{l|}{-2.126e+00} \\ \hline
-\multicolumn{1}{|l|}{8} & \multicolumn{1}{l|}{0.0151272015} & \multicolumn{1}{l|}{2.8272045512095620} & \multicolumn{1}{l|}{-1.890e-01} \\ \hline
-\multicolumn{1}{|l|}{9} & \multicolumn{1}{l|}{0.0001636224} & \multicolumn{1}{l|}{2.8270409288572882} & \multicolumn{1}{l|}{-2.001e-03} \\ \hline
-\multicolumn{1}{|l|}{10} & \multicolumn{1}{l|}{0.0000000190} & \multicolumn{1}{l|}{2.8270409098836575} & \multicolumn{1}{l|}{-2.320e-07} \\ \hline
-\multicolumn{1}{|l|}{11} & \multicolumn{1}{l|}{0.0000000000} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{-3.553e-15} \\ \hline
-\multicolumn{1}{|l|}{12} & \multicolumn{1}{l|}{-0.0000000000} & \multicolumn{1}{l|}{2.8270409098836571} & \multicolumn{1}{l|}{0.000e+00} \\ \hline
-\end{tabular}
-\end{table}
 
 
 
 
 \subsection{Wnioski}
-Analizując wykres funkcji danej w zadanu możemy wstępnie okreslić miejsca zerowe i zachowanie funkcji w ich otoczeniu. Rozpatrywana funkcja posiada dwa rodzaje miejsc zerowych które mają wpływ na szybkość ich wyznaczania, ponieważ w otoczeniu jednego z nich funkcja jest nachylona pod małym kątem do osi X natomiast w przypadku drugiego miejsca obserwujemy duży kolakny przyrost, więc wykres funkcji jest niewiele odchylony od osi pionowej. Jak wynika z otrzymanych rezultatów metoda bisekcji w obu przypadkach potrzebowała stosunkowo dużej ilości iteracji aby osiągnać zadaną dokładność. Jej zaletami jest niewrażliwość na szczególne zachowania funkcji więc mimo słabej zbierzności nadaje się do wyznaczania miejsc zerowych funkcji których przebiegu nie znamy w celu zabezpieczenia przez niezbierznością. Metoda siecznych potrzebowała około 10 iteracji aby dojść do wyniku. W przypadku wyznaczania miejsca zerowego w otoczeniu którego mamy doczynienia z płaską funkcją, jak miało to miejsze w zadaniu w drugim miejscu zerowym, metoda okazuje się najlepsza spośród wszystkich zastosowanych. Jej wadą jest niezbieżność w przypadku gdy sieczna przetnie wykres funkcji w większej ilości miejsc niż 2. Dlatego najeży wybierać wąskie przedziały startowe co zostsało uczynine w rozwiązaniu. Ostatnią wypróbowaną metodą jest metoda Newtona (stycznych), która w przypadku dobrego uwarunkowania (wąski przedział, brak odcinków o pochodniej mniejszej niż zero w przedziale startowym) okazuje się być najszybsza (w zadaniu ok 3-4 iteracje). Wynika to z najwyższego współczynnika zbierzności. 
+Analizując wykres funkcji danej w zadanu możemy wstępnie okreslić miejsca zerowe i zachowanie funkcji w ich otoczeniu. Rozpatrywana funkcja posiada dwa rodzaje miejsc zerowych które mają wpływ na szybkość ich wyznaczania, ponieważ w otoczeniu jednego z nich funkcja jest nachylona pod małym kątem do osi X natomiast w przypadku drugiego miejsca obserwujemy duży lokakny przyrost, więc wykres funkcji jest mniej odchylony od osi pionowej. Jak wynika z otrzymanych rezultatów metoda bisekcji w obu przypadkach potrzebowała stosunkowo dużej ilości iteracji aby osiągnać zadaną dokładność. Jej zaletami jest niewrażliwość na szczególne zachowania funkcji więc mimo słabej zbierzności nadaje się do wyznaczania miejsc zerowych funkcji których przebiegu nie znamy w celu zabezpieczenia przez niezbierznością. Metoda siecznych potrzebowała około 10 iteracji aby dojść do wyniku. W przypadku wyznaczania miejsca zerowego w otoczeniu którego mamy doczynienia z płaską funkcją, jak miało to miejsze w drugim miejscu zerowym, metoda okazuje się najlepsza spośród wszystkich zastosowanych. Jej wadą jest niezbieżność w przypadku gdy sieczna przetnie wykres funkcji w większej ilości miejsc niż 2. Dlatego najeży wybierać wąskie przedziały startowe co zostsało uczynine w rozwiązaniu. Ostatnią wypróbowaną metodą jest metoda Newtona (stycznych), która w przypadku dobrego uwarunkowania (wąski przedział, brak odcinków o pochodniej mniejszej niż zero w przedziale startowym) okazuje się być najszybsza (w zadaniu ok 3-4 iteracje). Wynika to z najwyższego współczynnika zbierzności. W przypadku wyznaczania drugiego miejsca zerowego metodą Newtona rozpatrywany przedział zawierał fragment funkcji z ujemną pochodną. Spowodowało to zwiększenie liczby iteracji dla metody Newtona co można uznać za przypadek kiedy funkcja zawiodła. 
 
 
 \section{Zadanie 2}
 
 \subsection{Polecenie}
-Używając metody Mullera MM2, proszę znaleźć wszystkie pierwiastki rzeczywiste i zespolone wielomianu \\
+Używając metody Mullera MM2, proszę znaleźć wszystkie pierwiastki rzeczywiste i zespolone wielomianu
+\begin{center}
 $f(x) = a_{4}x^4+a_{3}x^3+a_{2}x^2+a_{1}x+a_{0}$ 
 $
 \left[
@@ -465,25 +475,28 @@ $
        1 & 2 & 4 & -1 & 8
 \end{array}
 \right]$
+\end{center}
+
 
 
 \subsection{Metoda Mullera MM2}
-Metoda Mulllera polega na przybliżeniu rozpatrywanej funkcji trójmianem kwadratowym w otoczeniu zera i na tej podstawie wyznaczenia miejsc zerowych rzeczywistych bądź zespolonych. Wyróżniamy dwa rodzaje metody Mullera. Pierwsza (MM1) polega na aproksymacji wielomianu na podstawie jego wartości w 3 różnych punktach, natomiast druga (MM2) wykorzystuje wartość funkcji, pierwszej oraz drugiej pochodniej w danym punkcie i na tej podstawie zostają wyznaczone współczynniki $a$, $b$ ,$c$ trójmianu kwadratowego. Służą do tego następujące zależności:\\
-\\
-$y(0) = c = f(x_{k}),$\\
-$y'(0) = b = f'(x_{k}),$\\
-$y''(0) = 2a = f''(x_{k})$\\
-\\
-Mając wyznaczone współczynniki trójmianu kwadratowego możemy bezpośrednio przejść do wzorów na jego pierwiastki:\\
-\\
-$z_{1} = \frac{-2f(x_{k})}{f'(x_{k})+\sqrt{(f'(x_{k}))^2-2f(x_{k})f''(x_{k})}}$\\
-\\
-$z_{2} = \frac{-2f(x_{k})}{f'(x_{k})-\sqrt{(f'(x_{k}))^2-2f(x_{k})f''(x_{k})}}$\\
-\\
-Przeprowadzając iteracyjne przybliżanie zera wybieramy pierwiastek o mniejszym module:\\
-\\
-$x_{k+1} = x_{k}+min(|z_{1}|,|z_{2}|)$\\
-\\
+Metoda Mullera polega na przybliżeniu rozpatrywanej funkcji trójmianem kwadratowym w otoczeniu zera i na tej podstawie wyznaczenia miejsc zerowych rzeczywistych bądź zespolonych. Wyróżniamy dwa rodzaje metody Mullera. Pierwsza (MM1) polega na aproksymacji wielomianu na podstawie jego wartości w 3 różnych punktach, natomiast druga (MM2) wykorzystuje wartość funkcji, pierwszej oraz drugiej pochodniej w danym punkcie i na tej podstawie zostają wyznaczone współczynniki $a$, $b$ ,$c$ trójmianu kwadratowego. Służą do tego następujące zależności:
+\begin{center}
+$y(0) = c = f(x_{k}),$
+$y'(0) = b = f'(x_{k}),$
+$y''(0) = 2a = f''(x_{k})$
+\end{center}
+Mając wyznaczone współczynniki trójmianu kwadratowego możemy bezpośrednio przejść do wzorów na jego pierwiastki:
+\begin{center}
+$z_{1} = \frac{-2f(x_{k})}{f'(x_{k})+\sqrt{(f'(x_{k}))^2-2f(x_{k})f''(x_{k})}}$
+\end{center}
+\begin{center}
+$z_{2} = \frac{-2f(x_{k})}{f'(x_{k})-\sqrt{(f'(x_{k}))^2-2f(x_{k})f''(x_{k})}}$
+\end{center}
+Przeprowadzając iteracyjne przybliżanie zera wybieramy pierwiastek o mniejszym module:
+\begin{center}
+$x_{k+1} = x_{k}+min(|z_{1}|,|z_{2}|)$
+\end{center}
 Metoda Mullera podobnie jak Newtona jest zbierzna jedynie lokalnie z rzędem zbierzności 1.84. Jest szybsza od metody siecznych i niewiele wolniejsza od metody Newtona. Znaczącą różnicą jest implementacja pozwalająca na wyznaczanie zespolonych zer funkcji. 
 
 
@@ -532,16 +545,109 @@ end
 
 \end{lstlisting}
 
-\vspace{2cm}
+\vspace{1cm}
 
 \subsection{Wyniki działania programu}
-%analitycnznie
-%tabelka z programu
 
-\vspace{10cm}
+\begin{figure}[H]
+\caption{Wykres wielomianu z zadania 2}
+\includegraphics[width=\textwidth]{2}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Miejsca zerowe wyznaczone alalitycznie}} \\ \hline
+-4.8158 & -0.30075 & 1.05826 - 0.51087i & 1.05826 + 0.51087i \\ \hline
+\multicolumn{4}{|c|}{\textbf{Miejsca zerowe wyznaczone metodą Mullera}} \\ \hline
+-4.8158 & -0.3007 & 1.0583 - 0.5109i & 1.0583 + 0.5109i \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Wyniki zadanie 2 cz. 1}} \\ \hline
+\multicolumn{1}{|c|}{przedział startowy} & iteracja & wynik & przyrost \\ \hline
+-5 & 1 & -4.815098 & 0.184902 \\ \hline
+-5 & 2 & -4.815775 & -0.000677 \\ \hline
+-5 & 3 & -4.815775 & 0.000000 \\ \hline
+-5 & 4 & -4.815775 & 0.000000 \\ \hline
+-5 & 5 & -4.815775 & -0.000000 \\ \hline
+-5 & 6 & -4.815775 & 0.000000 \\ \hline
+-4 & 1 & -4.872683 & -0.872683 \\ \hline
+-4 & 2 & -4.815756 & 0.056927 \\ \hline
+-4 & 3 & -4.815775 & -0.000019 \\ \hline
+-4 & 4 & -4.815775 & 0.000000 \\ \hline
+-4 & 5 & -4.815775 & 0.000000 \\ \hline
+-4 & 6 & -4.815775 & -0.000000 \\ \hline
+-3 & 1 & -1.478763 & 1.521237 \\ \hline
+-3 & 2 & -0.472623 & 1.006140 \\ \hline
+-3 & 3 & -0.300054 & 0.172569 \\ \hline
+-3 & 4 & -0.300747 & -0.000693 \\ \hline
+-3 & 5 & -0.300747 & 0.000000 \\ \hline
+-3 & 6 & -0.300747 & -0.000000 \\ \hline
+-2 & 1 & -0.774964 & 1.225036 \\ \hline
+-2 & 2 & -0.296363 & 0.478601 \\ \hline
+-2 & 3 & -0.300747 & -0.004383 \\ \hline
+-2 & 4 & -0.300747 & 0.000000 \\ \hline
+-2 & 5 & -0.300747 & -0.000000 \\ \hline
+-2 & 6 & -0.300747 & -0.000000 \\ \hline
+-1 & 1 & -0.311312 & 0.688688 \\ \hline
+-1 & 2 & -0.300746 & 0.010565 \\ \hline
+-1 & 3 & -0.300747 & -0.000000 \\ \hline
+-1 & 4 & -0.300747 & -0.000000 \\ \hline
+-1 & 5 & -0.300747 & -0.000000 \\ \hline
+-1 & 6 & -0.300747 & -0.000000 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Wyniki zadanie 2 cz. 2}} \\ \hline
+\multicolumn{1}{|c|}{przedział startowy} & iteracja & wynik & przyrost \\ \hline
+0 & 1 & -0.309017 & -0.309017 \\ \hline
+0 & 2 & -0.300747 & 0.008270 \\ \hline
+0 & 3 & -0.300747 & -0.000000 \\ \hline
+0 & 4 & -0.300747 & -0.000000 \\ \hline
+0 & 5 & -0.300747 & -0.000000 \\ \hline
+0 & 6 & -0.300747 & -0.000000 \\ \hline
+1 & 1 & 0.928571 & -0.071429 \\ \hline
+1 & 2 & 1.057209 & 0.128638 \\ \hline
+1 & 3 & 1.058261 & 0.001052 \\ \hline
+1 & 4 & 1.058261 & -0.000000 \\ \hline
+1 & 5 & 1.058261 & -0.000000 \\ \hline
+1 & 6 & 1.058261 & 0.000000 \\ \hline
+2 & 1 & 1.411765 & -0.588235 \\ \hline
+2 & 2 & 1.089902 & -0.321863 \\ \hline
+2 & 3 & 1.058224 & -0.031678 \\ \hline
+2 & 4 & 1.058261 & 0.000037 \\ \hline
+2 & 5 & 1.058261 & 0.000000 \\ \hline
+2 & 6 & 1.058261 & -0.000000 \\ \hline
+3 & 1 & 2.006849 & -0.993151 \\ \hline
+3 & 2 & 1.257315 & -0.749534 \\ \hline
+3 & 3 & 1.044287 & -0.213028 \\ \hline
+3 & 4 & 1.058128 & 0.013841 \\ \hline
+3 & 5 & 1.058261 & 0.000133 \\ \hline
+3 & 6 & 1.058261 & 0.000000 \\ \hline
+4 & 1 & 2.629032 & -1.370968 \\ \hline
+4 & 2 & 2.004778 & -0.624254 \\ \hline
+4 & 3 & 1.414140 & -0.590638 \\ \hline
+4 & 4 & 1.090117 & -0.324023 \\ \hline
+4 & 5 & 1.058222 & -0.031896 \\ \hline
+4 & 6 & 1.058261 & 0.000039 \\ \hline
+\end{tabular}
+\end{table}
+
 \subsection{Wnioski}
-
-
+Metoda Mullera dla wielomianu danego w zadaniu okazała się bardzo szybka, potrzebynch było jedynie kilka iteracji aby dojść do wyników zbliżonych do rozwiązania analitycznego. Komentarza wymaga realizacja zadania, ponieważ metoda została zastosowana kolejno do przedziałów o długości 1 rozpoczynając od pierwszego zawierającego zero funkcji (co zostało ustalone na podstawie obliczeń analitycznych). Dzięki aproksymacji kwadratowej metoda zawsze zbiegała do bliższego od wierzchołka paraboli zera, co uniwmożliwiło pominięcie rozwiązania podczas badania kolejnych przedziałów. Jeżeli chodzi o pierwiastki zespolone spełniają one warunek wzajemnego sprzężenia. Wszystkich rozwiązań wyszło tyle ile wynosi stopień wielomainu co równierz jest zgodne z teorią. 
 	
 \end{document}
 

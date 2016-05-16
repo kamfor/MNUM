@@ -71,10 +71,10 @@ Teoretyczny zarys metody bisekcji możemy przybliżyć poniższym algorytmem:
 	\end{center}
   i obliczamy wartość $f(x)$ w tym punkcie. 
   \item Obliczamy iloczyny $f(a_{n})*f(c_{n})$ oraz $f(b_{n})*f(c_{n})$ i jako nowy przedział $[a_{n=1},b_{n+1}]$
-  wybieramy argumenty tego iliczynu którego wartość jest ujemna. 
+  wybieramy argumenty tego iloczynu którego wartość jest ujemna. 
 \end{enumerate} 
-Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. W przypadku "płaskich"  funkcji warto też konrtolować długość rozpatrywanego przedziału. 
-Dokładność wyniku zalezy jedynie od ilości iteracji dlatego metoda jest zbieżna liniowo z ilorazem zbieżności 0.5, co czyni ją stosunkowo wolno zbieżną w przypadku wyboru szerokiego przedziału początkowego. 
+Kroki te powtarzamy aż do momentu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. W przypadku "płaskich"  funkcji warto też kontrolować długość rozpatrywanego przedziału. 
+Dokładność wyniku zależy jedynie od ilości iteracji dlatego metoda jest zbieżna liniowo z ilorazem zbieżności 0.5, co czyni ją stosunkowo wolno zbieżną w przypadku wyboru szerokiego przedziału początkowego. 
 
 
 
@@ -114,10 +114,10 @@ end
 \subsubsection{Opis teoretyczny}
 Teoretyczny zarys metody siecznych możemy przybliżyć poniższym algorytmem:
 \begin{enumerate}
-  \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy punkt $\delta x_{n}$ jako miejcse przecięcia siecznej funkcji przechodzącej prze punkty $[a_{n},b_{n}]$ gdzie $\delta x_{n}=\frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})}$
-  \item Nastpepnie nowy przedział oznaczamy $x_{n+1}=x_{n}-\delta x_{n}$ 
+  \item Począwszy od przedziału startowego $[a,b]$ = $[a_{0},b_{0}]$ obliczamy punkt $\delta x_{n}$ jako miejsce przecięcia siecznej funkcji przechodzącej prze punkty $[a_{n},b_{n}]$ gdzie $\delta x_{n}=\frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})}$
+  \item Następnie nowy przedział oznaczamy $x_{n+1}=x_{n}-\delta x_{n}$ 
 \end{enumerate} 
-Kroki te powtarzamy aż do mementu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbieżności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
+Kroki te powtarzamy aż do momentu uzyskania $f(c_{n})<\delta$ gdzie $\delta$ to oczekiwana dokładność rozwiązania. Rząd zbieżności metody siecznych wynosi $(1+sqrt(5))/2$ co jest w przybliżeniu równe $1.618$. 
 Jest więc ona dużo szybsza od metody bisekcji, jednak jest zbieżna jedynie lokalnie. Jeżeli ine zadbamy o wybór odpowiedniego przedziału początkowego może okazać się w ogóle nie zbieżna.
 
 
@@ -153,11 +153,11 @@ end
 
 \subsection{Metoda Newtona}
 \subsubsection{Opis teoretyczny}
-Metoda Newtona polega na wyznaczeniu częściowego (uciętego) rozwinięcia w szereg Taylora danej funkcji, które możemy trakować jak liniowe przybliżenie funkcji według wzoru:\
+Metoda Newtona polega na wyznaczeniu częściowego (uciętego) rozwinięcia w szereg Taylora danej funkcji, które możemy traktować jak liniowe przybliżenie funkcji według wzoru:\
   	\begin{center}
   	$f(x) \approx f(x_{n})+f'(x_{n})(x-x_{n})$
 	\end{center}
-Nastepnie wyznaczamy kolejne punkty iteracji poprzez przywórnanie do zera otrzymanej aproksymacji:\\
+Następnie wyznaczamy kolejne punkty iteracji poprzez przyrównanie do zera otrzymanej aproksymacji:\\
 \begin{center}
 $f(x_{n})+f'(x_{n})(x_{n+1}-x_{n}) = 0$
 \end{center}
@@ -165,7 +165,7 @@ Prowadzi to do zależności iteracyjnej danej następującym wzorem:\\
 \begin{center}
 $x_{n+1} = x_{n}-\frac{f(x_{n})}{f'(x_{n})}$
 \end{center}
-Metoda Newtona jest zbieżna jedynie lokalnie, ponieważ wyznaczjąc styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbieżności. Dla przypadków pochodnej większej od zera metoda jest zbieżna kwadratowo. Rząd zbieżności wynosi 2.
+Metoda Newtona jest zbieżna jedynie lokalnie, ponieważ wyznaczając styczną do wykresu w danym punkcie możemy w przypadku ujemnego znaku pochodnej dojsć do rozbieżności. Dla przypadków pochodnej większej od zera metoda jest zbieżna kwadratowo. Rząd zbieżności wynosi 2.
 
 \subsubsection{Realizacja w programie Matlab}
 \begin{lstlisting}
@@ -194,7 +194,7 @@ end
 \end{lstlisting}
 
 \subsection{Analiza danych wejściowych}
-W celu wyznaczenia przedziałów izolacji miejsc zerowych został wykorsyztany algorytm opisany w skrypcie prof. Tatjewskiego. Wstępna analiza danych rozpoczyna się od wygenerowania wykresu funkcji w danym przedziale i na tej podstawie wyboru przedziału startowego dla algorytmu. Nastepnie w podanycm przedziale w pętli badany jest znak iloczynu funkcji w punktach graniczynych. Jezeli jest on ujemny, oznacza to występowanie miejsca zerowego w danycm przedziale. Jeżeli nie, to przedział jest rozszerzany do momentu przekroczenia przedziału danego w zadaniu. 
+W celu wyznaczenia przedziałów izolacji miejsc zerowych został wykorzystany algorytm opisany w skrypcie prof. Tatjewskiego. Wstępna analiza danych rozpoczyna się od wygenerowania wykresu funkcji w danym przedziale i na tej podstawie wyboru przedziału startowego dla algorytmu. Następnie w podanym przedziale w pętli badany jest znak iloczynu funkcji w punktach granicznych. Jeżeli jest on ujemny, oznacza to występowanie miejsca zerowego w danym przedziale. Jeżeli nie, to przedział jest rozszerzany do momentu przekroczenia przedziału danego w zadaniu. 
 Poniżej wykres funkcji z zaznaczonymi przedziałami izolacji wyznaczonymi przez algorytm. 
 
 \begin{figure}[H]
@@ -454,7 +454,7 @@ end
 
 
 \subsection{Wnioski}
-Analizując wykres funkcji danej w zadanu możemy wstępnie okreslić miejsca zerowe i zachowanie funkcji w ich otoczeniu. Rozpatrywana funkcja posiada dwa rodzaje miejsc zerowych które mają wpływ na szybkość ich wyznaczania, ponieważ w otoczeniu jednego z nich funkcja jest nachylona pod małym kątem do osi X natomiast w przypadku drugiego miejsca obserwujemy duży lokalny przyrost, więc wykres funkcji jest mniej odchylony od osi pionowej. Jak wynika z otrzymanych rezultatów metoda bisekcji w obu przypadkach potrzebowała stosunkowo dużej ilości iteracji aby osiągnać zadaną dokładność. Jej zaletami jest niewrażliwość na szczególne zachowania funkcji więc mimo słabej zbieżności nadaje się do wyznaczania miejsc zerowych funkcji których przebiegu nie znamy w celu zabezpieczenia przez niezbieżnością. Metoda siecznych potrzebowała około 10 iteracji aby dojść do wyniku. W przypadku wyznaczania miejsca zerowego w otoczeniu którego mamy doczynienia z płaską funkcją, jak miało to miejsze w drugim miejscu zerowym, metoda okazuje się najlepsza spośród wszystkich zastosowanych. Jej wadą jest niezbieżność w przypadku gdy sieczna przetnie wykres funkcji w większej ilości miejsc niż 2. Dlatego najeży wybierać wąskie przedziały startowe co zostało uczynione w rozwiązaniu. Ostatnią wypróbowaną metodą jest metoda Newtona (stycznych), która w przypadku dobrego uwarunkowania (wąski przedział, brak odcinków o pochodniej mniejszej niż zero w przedziale startowym) okazuje się być najszybsza (w zadaniu ok 3-4 iteracje). Wynika to z najwyższego współczynnika zbieżności. W przypadku wyznaczania drugiego miejsca zerowego metodą Newtona rozpatrywany przedział zawierał fragment funkcji z ujemną pochodną. Spowodowało to zwiększenie liczby iteracji dla metody Newtona co można uznać za przypadek kiedy funkcja zawiodła. 
+Analizując wykres funkcji danej w zadaniu możemy wstępnie określić miejsca zerowe i zachowanie funkcji w ich otoczeniu. Rozpatrywana funkcja posiada dwa rodzaje miejsc zerowych które mają wpływ na szybkość ich wyznaczania, ponieważ w otoczeniu jednego z nich funkcja jest nachylona pod małym kątem do osi X natomiast w przypadku drugiego miejsca obserwujemy duży lokalny przyrost, więc wykres funkcji jest mniej odchylony od osi pionowej. Jak wynika z otrzymanych rezultatów metoda bisekcji w obu przypadkach potrzebowała stosunkowo dużej ilości iteracji aby osiągać zadaną dokładność. Jej zaletami jest niewrażliwość na szczególne zachowania funkcji więc mimo słabej zbieżności nadaje się do wyznaczania miejsc zerowych funkcji których przebiegu nie znamy w celu zabezpieczenia przez niezbieżnością. Metoda siecznych potrzebowała około 10 iteracji aby dojść do wyniku. W przypadku wyznaczania miejsca zerowego w otoczeniu którego mamy do czynienia z płaską funkcją, jak miało to miejsce w drugim miejscu zerowym, metoda okazuje się najlepsza spośród wszystkich zastosowanych. Jej wadą jest niezbieżność w przypadku gdy sieczna przetnie wykres funkcji w większej ilości miejsc niż 2. Dlatego najeży wybierać wąskie przedziały startowe co zostało uczynione w rozwiązaniu. Ostatnią wypróbowaną metodą jest metoda Newtona (stycznych), która w przypadku dobrego uwarunkowania (wąski przedział, brak odcinków o pochodnej mniejszej niż zero w przedziale startowym) okazuje się być najszybsza (w zadaniu ok 3-4 iteracje). Wynika to z najwyższego współczynnika zbieżności. W przypadku wyznaczania drugiego miejsca zerowego metodą Newtona rozpatrywany przedział zawierał fragment funkcji z ujemną pochodną. Spowodowało to zwiększenie liczby iteracji dla metody Newtona co można uznać za przypadek kiedy funkcja zawiodła. 
 
 
 \section{Zadanie 2}
@@ -480,7 +480,7 @@ $
 
 
 \subsection{Metoda Mullera MM2}
-Metoda Mullera polega na przybliżeniu rozpatrywanej funkcji trójmianem kwadratowym w otoczeniu zera i na tej podstawie wyznaczenia miejsc zerowych rzeczywistych bądź zespolonych. Wyróżniamy dwa rodzaje metody Mullera. Pierwsza (MM1) polega na aproksymacji wielomianu na podstawie jego wartości w 3 różnych punktach, natomiast druga (MM2) wykorzystuje wartość funkcji, pierwszej oraz drugiej pochodniej w danym punkcie i na tej podstawie zostają wyznaczone współczynniki $a$, $b$ ,$c$ trójmianu kwadratowego. Służą do tego następujące zależności:
+Metoda Mullera polega na przybliżeniu rozpatrywanej funkcji trójmianem kwadratowym w otoczeniu zera i na tej podstawie wyznaczenia miejsc zerowych rzeczywistych bądź zespolonych. Wyróżniamy dwa rodzaje metody Mullera. Pierwsza (MM1) polega na aproksymacji wielomianu na podstawie jego wartości w 3 różnych punktach, natomiast druga (MM2) wykorzystuje wartość funkcji, pierwszej oraz drugiej pochodnej w danym punkcie i na tej podstawie zostają wyznaczone współczynniki $a$, $b$ ,$c$ trójmianu kwadratowego. Służą do tego następujące zależności:
 \begin{center}
 $y(0) = c = f(x_{k}),$
 $y'(0) = b = f'(x_{k}),$
@@ -647,7 +647,7 @@ end
 \end{table}
 
 \subsection{Wnioski}
-Metoda Mullera dla wielomianu danego w zadaniu okazała się bardzo szybka, potrzebynch było jedynie kilka iteracji aby dojść do wyników zbliżonych do rozwiązania analitycznego. Komentarza wymaga realizacja zadania, ponieważ metoda została zastosowana kolejno do przedziałów o długości 1 rozpoczynając od pierwszego zawierającego zero funkcji (co zostało ustalone na podstawie obliczeń analitycznych). Dzięki aproksymacji kwadratowej metoda zawsze zbiegała do bliższego od wierzchołka paraboli zera, co uniwmożliwiło pominięcie rozwiązania podczas badania kolejnych przedziałów. Jeżeli chodzi o pierwiastki zespolone spełniają one warunek wzajemnego sprzężenia. Wszystkich rozwiązań wyszło tyle ile wynosi stopień wielomainu co równierz jest zgodne z teorią. 
+Metoda Mullera dla wielomianu danego w zadaniu okazała się bardzo szybka, potrzebnych było jedynie kilka iteracji aby dojść do wyników zbliżonych do rozwiązania analitycznego. Komentarza wymaga realizacja zadania, ponieważ metoda została zastosowana kolejno do przedziałów o długości 1 rozpoczynając od pierwszego zawierającego zero funkcji (co zostało ustalone na podstawie obliczeń analitycznych). Dzięki aproksymacji kwadratowej metoda zawsze zbiegała do bliższego od wierzchołka paraboli zera, co uniemożliwiło pominięcie rozwiązania podczas badania kolejnych przedziałów. Jeżeli chodzi o pierwiastki zespolone spełniają one warunek wzajemnego sprzężenia. Wszystkich rozwiązań wyszło tyle ile wynosi stopień wielomianu co również jest zgodne z teorią. 
 	
 \end{document}
 

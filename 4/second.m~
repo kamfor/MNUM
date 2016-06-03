@@ -1,18 +1,14 @@
-%Realizacja podpunktu 1 metoda RK4 ze stalym krokiem
+%Realizacja podpunktu 2 metoda metoda predyktor-korektor Adamsa 4-rzedu
 clear; 
 zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor kroków
-step = 0.001; %krok
+step = 0.01; %krok
 
 for k = 1:4
     
     data = rk4static(zero(k,:),20,step);
-    %error = rk4static(zero(k,:),20,step/2);
-    %for i=1:(20/step)
-        %error(i,1:2) = abs(data(i,1:2)-error(2*i,1:2));
-    %end
-    %n = norm(error);
-    %disp(n); 
-    h = figure('visible','off');
+    
+    h = figure;
+    %('visible','off');
     plot3(data(:,1),data(:,2),data(:,3));
     l = size(data,1);
     hold on;
@@ -21,7 +17,6 @@ for k = 1:4
     plot3(data(:,1),repmat(yl(2),l,1),data(:,3));
     plot3(repmat(xl(2),l,1),data(:,2),data(:,3));
     grid on;
-    name =  ['metoda RK4 krok:' num2str(step) ' podpunkt:' num2str(k)]; 
-    title(name);
+    name =  ['krok_' num2str(step) num2str(k)]; 
     saveas(h,name,'jpg');
 end

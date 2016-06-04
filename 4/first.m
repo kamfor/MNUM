@@ -1,6 +1,6 @@
 %Realizacja podpunktu 1 metoda RK4 ze stalym krokiem
 clear; 
-zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor kroków
+zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor stanow poczatkowych
 step = 0.05; %krok
 
 for k = 1:4

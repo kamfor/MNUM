@@ -1,6 +1,6 @@
 %Realizacja podpunktu 2 metoda metoda predyktor-korektor Adamsa 4-rzedu
 clear; 
-zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor kroków
+zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor stanow poczatkowych
 step = 0.1; %krok
 
 for k = 1:4

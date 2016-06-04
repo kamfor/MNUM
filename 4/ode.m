@@ -12,7 +12,7 @@ for k = 1:4
     
     h = figure;
     %('visible','off');
-    plot(data.y(1,:),data.y(2,:),'-o');
+    plot3(data.y(1,:),data.y(2,:),data.x,'-o');
     %l = size(data.x);
     hold on;
     %xl = get(gca,'xlim');
@@ -22,7 +22,7 @@ for k = 1:4
     %scatter2(data.y(1,:),repmat(yl(2),[l,1]),data.x,'.');
     %scatter2(repmat(xl(2),[l,1]),data.y(2,:),data.x,'.');
     grid on; 
-    name =  ['metoda ode45 podpunkt:' num2str(k)];
+    name =  ['metoda ode45 3d podpunkt:' num2str(k)];
     title(name);
     saveas(h,name,'jpg'); 
 end

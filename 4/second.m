@@ -1,13 +1,13 @@
 %Realizacja podpunktu 2 metoda metoda predyktor-korektor Adamsa 4-rzedu
 clear; 
 zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor stanow poczatkowych
-step = 0.5; %krok
+step = 0.01; %krok
 
-for k = 1:4
+for k = 1:1
     
-    data = rk4static(zero(k,:),20,step);
+    data = pkadams(zero(k,:),20,step);
     
-    h = figure('visible','off');
+    h = figure;%('visible','off');
     plot(data(:,1),data(:,2),'-o');
     l = size(data,1);
     hold on;

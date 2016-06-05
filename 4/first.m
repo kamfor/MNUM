@@ -1,9 +1,9 @@
 %Realizacja podpunktu 1 metoda RK4 ze stalym krokiem
 clear; 
 zero=[8 7; 0 0.4; 5 0; 0.01 0.001]; %wektor stanow poczatkowych
-step = 2; %krok
+step = 0.04; %krok
 
-for k = 1:4
+for k = 1:1
     
     data = rk4static(zero(k,:),20,step);
     %error = rk4static(zero(k,:),20,step/2);
@@ -12,7 +12,7 @@ for k = 1:4
     %end
     %n = norm(error);
     %disp(n); 
-    h = figure('visible','off');
+    h = figure;%('visible','off');
     plot(data(:,1),data(:,2),'-o');
     l = size(data,1);
     hold on;

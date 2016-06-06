@@ -73,7 +73,9 @@ $$ \mathbf{x_{n+1}} = \mathbf{x_{n}} + \frac{1}{6}h(\mathbf{k_{1}} + 2\mathbf{k_
 $$\mathbf{k_{1}} = \mathbf{f}(t_{n}, \mathbf{x_{n}})$$
 $$\mathbf{k_{2}} = \mathbf{f}(t_{n}+\frac{1}{2}h, \mathbf{x_{n}} + \frac{1}{2}h\mathbf{k_{1}})$$
 $$\mathbf{k_{3}} = \mathbf{f}(t_{n}+\frac{1}{2}h, \mathbf{x_{n}} + \frac{1}{2}h\mathbf{k_{2}})$$
-$$\mathbf{k_{4}} = \mathbf{f}(t_{n}+h, \mathbf{x_{n}} + h\mathbf{k_{3}}$$
+$$\mathbf{k_{4}} = \mathbf{f}(t_{n}+h, \mathbf{x_{n}} + h\mathbf{k_{3}}$$\\
+
+
 
 \subsection{Kod funkcji zwracającej punkt określony równaniami}
 \begin{lstlisting}
@@ -86,7 +88,7 @@ D(1) = x(2) + x(1)*(0.2 -x(1)^2 -x(2)^2);
 D(2) = -x(1) + x(2)*(0.2 -x(1)^2 -x(2)^2);
 end
 \end{lstlisting}
-
+\hspace{5cm}
 \subsection{Kod funkcji zwracającej rozwiązania metodą RK4}
 \begin{lstlisting}
 function [Y] = rk4static(x,timelimit,stp)
@@ -145,60 +147,66 @@ end
 \end{lstlisting}
 
 \subsection{Dobieranie długości kroku}
-Podczas realizacji pierwszego podpunktu w zadaniu na szczególną uwagę zasługuje metoda wyboru długości kroku. W mojej realizacji została ona oparta o metodę prób i błędów. Zaczynając od stosunkowo dużych kroków o długości np.2 kolejno zmniejszałem krok aż do uzyskania odpowiednio gładkiej trajektorii. Wyniki tych prób przedstawiam poniżej w postaci wykresów trajektori ruchu punktu. Pozwoiłem sobie na wygenerowanie również wykresów trójwymiarowych, na których dokładnie widać długość dobieranego kroku. 
-
+Podczas realizacji pierwszego podpunktu w zadaniu na szczególną uwagę zasługuje metoda wyboru długości kroku. W mojej realizacji została ona oparta o metodę prób i błędów. Zaczynając od stosunkowo dużych kroków o długości np.2 kolejno zmniejszałem krok aż do uzyskania odpowiednio gładkiej trajektorii. Wyniki tych prób przedstawiam poniżej w postaci wykresów trajektori ruchu punktu. Punkty na wykresie odpowiadają punktom wyznaczonym przez algotyrm, w celu zapewnienia przejrzystoci punkty na wykresie zostały połączone. 
 \subsection{Wyniki dla podpunktu 1}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:0,03 podpunkt:1.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:0,01 podpunkt:1.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:2 podpunkt:2.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:0,05 podpunkt:2.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:0,1 podpunkt:3.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:0,05 podpunkt:3.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:2 podpunkt:4.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 krok:0,1 podpunkt:4.jpg}
 \end{figure}
 
 \subsection{Wnioski}
-Metoda Rungego-Kutty dla podanych równań jest szybka i stabilna numeryczie przy odpowiednim kroku. Zmniejszając krok możaby coraz dokładniej wyznaczyć trajektorię. Dobór odpowiedniej długości kroku w sposób interaktywny jest problematyczny. Metoda róznież ma dość wysoki nakład obliczeniowy ponieważ jest on zależny tylko od przedziału i długości kroku, dlatego nie ma znaczenia czy równania są skomplikowane czy bardzo proste. 
+Metoda Rungego-Kutty dla podanych równań jest szybka i stabilna numeryczie przy odpowiednim kroku. Zmniejszając krok możaby coraz dokładniej wyznaczyć trajektorię. Dobór odpowiedniej długości kroku w sposób interaktywny jest problematyczny ze względu na różnorodność kroków w zaleznosci od pountow startowych. Metoda róznież ma dość wysoki nakład obliczeniowy ponieważ jest on zależny tylko od przedziału i długości kroku, dlatego nie ma znaczenia czy równania są skomplikowane czy bardzo proste. 
 
-\section{Metoda predyktor-korektor Adamsa ze stałym krokiem}
-\subsection{Opis algorytmu}
-Metoda predyktor-korektor Adamsa należy do grupy metod wielkorokowych..
+\section{Metody wielokrokowe}
+Metody wielokrokwe w odróżnieniu od iteracyjnych uzywają do wyznaczenia punktu wartości obliczonych w poprzednich krokach. Wynika z tego że przy rozpoczynaniu rozwiązywania zagadnienia metodą wielokrokową musimy wyznaczyć punkty początkowe (zazwiczaj jedną z metod iteracyjnych) a następnie na podstawie wartości początkowch obliczane są kolejne punkty. Medod tych używa się w przypadku gdy wyznaczanie wartości bezpośrednio ze wzoru jest czasochłonne, ponieważ metody wielokrokowe rzadziej wykorzystują bezpośrednie obliczanie wartości funkcji. Wyróżniamy metody jawne które wykorzystują jedynie wartości funkcji w poprzednio obliczonych punktach oraz niejawne kore dodatkowo korzystają z wartości w punkcie bierzącym. 
+
+\subsection{Metoda predyktor-korektor Adamsa}
+Metoda predykcyjno-korekcyjna łączy zalety metod jawnych i niejawnych. Dzięki temu zachowuje wysoki rząd i małą stałą błędu na szerokim obszarze przy zachowaniu małej liczby iteracji. Praktyczne realizacja metody polega na obliczeniu czterech członów: P - predykcja, E - ewaluacja, K - korekcja, E - kolejna ewaluacja. Dla metody predyktor - korektor Adamsa rozwiązanie możemy przybliżyć następującymi równaniami: 
+$$P:  y_{n}^{[0]} = y_{n-1} + h \sum_{j=1}^{k} \beta_{j}f_{n-j}$$
+$$E:  f_{n}^{[0]} = f(x_{n},y_{n}^{[0]})$$
+$$K:  y_{n} = y_{n-1} + h \sum_{j=1}^{k} \beta_{j}^{*}f_{n-j}+h\beta_{0}^{*}f_{n}^{[0]}$$
+$$E:  f_{n} = f(x_{n},y_{n})$$
+
 
 \subsection{Realizacja funkcji RK4 w programie Matlab}
 \begin{lstlisting}
 function[Y] = pkadams(x,timelimit,stp)
-%funkcja zwracajaca wektor wyznacziony metoda PK adamsa 
+%funkcja zwracajaca wektor wyznacziony metoda PK adamsa
 %dane wejsciowe
 %x - wektor danych 
 %timelimit - zakres czasu
@@ -257,37 +265,37 @@ end
 Podobnie jak w poprzednim podpunkcie, długość kroku była wprowadzana przez użytkownika w trybie interaktywnym. 
 
 \subsection{Wyniki}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,025 podpunkt:1.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,01 podpunkt:1.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,5 podpunkt:2.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,1 podpunkt:2.jpg}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,1 podpunkt:3.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,05 podpunkt:3.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,5 podpunkt:4.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda Adamsa krok:0,1 podpunkt:4.jpg}
 \end{figure}
@@ -297,7 +305,7 @@ Metoda predyktor-korektor Adamsa zdecydowanie dokładniej określa trajektorium 
 
 \section{Metoda RK4 ze zmiennym krokiem}
 \subsection{Opis algorytmu}
-Jeżeli chodzi o metodę obliczeń to jest ona identyczna jak w tej ze stałym krokiem. Na szczególną uwagę zasługuje sposób oceny błędu i na tej podstawie regulacji długości kroku...
+Jeżeli chodzi o metodę obliczeń to jest ona identyczna jak w tej ze stałym krokiem. Na szczególną uwagę zasługuje sposób oceny błędu i na tej podstawie regulacji długości kroku. Określanie błedu jest realizowane metodą połowienia kroku. W pojedyńczej iteracji obliczne są wartości funkcji dla całego kroku i jego połowy, następnie jeżeli różnica między otrzymanymi wartościami jest mniejsza niż założony współczynnik dokładności, to krok jest zwiększany, a gdy większa to zmniejszany. Jako wartość funkcji brana pod uwagę jest zawsze ta wyznaczona za pomocą dwóch mniejszych kroków. Długość kroku jest dodatkowo mnożona przez współczynnik bezpieczeństwa tak aby wzrost kroku nie był zbyt drastyczny, i aby również drastycznie nie zmalał, co doprowadziło by do znacznego wydłużenia czasu obliczeń. 
 
 \subsection{Realizacja funkcji w programie Matlab}
 \begin{lstlisting}
@@ -383,42 +391,48 @@ end
 \end{lstlisting}
 
 \subsection{Wyniki}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 zmienny krok podpunkt:1.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 zmienny krok podpunkt:2.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 zmienny krok podpunkt:3.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{2d/metoda RK4 zmienny krok podpunkt:4.jpg}
 \end{figure}
 
-\subsection{Porównanie z wynikami funkcji ode45}
-Funkcja ode45 dobrała znacznie większe kroki blablabla. 
+\subsection{Winoski}
+Metoda RK4 ze zmiennym krokiem znacznie wydajniej radzi sobie z obliczeniami ze względu na istotne zmniejszenie liczby kroków na gładkich odcinkach funkcji. Zaimplementowana prze ze mnie megoda doboru długości kroku nie nalezy jednak do wyrafinowanych. Przez co wzrost wydajności nie jest szczególnie mocno zauważalny. 
 
-\begin{figure}[htp]
+\section{Porównanie z wynikami funkcji ode45}
+Funkcja ode45 dobrała znacznie większe kroki co widać na wykresach, przez to czas obliczeń był rzędy razy mniejszy niż zaimplementowanych przeze mnie metod. Jeżeli chodzi o dokładność to wykresy wygenerowane funkcą ode45 są dużo mniej "gładkie" jednak krok jest dobierany równomiernie, i nie widać nakładjących się na siebie punktów na wykresie, co świadczy o optymalności metody. 
+
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{ode/metoda ode45 podpunkt:1.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{ode/metoda ode45 podpunkt:2.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{ode/metoda ode45 podpunkt:3.jpg}
 \end{figure}
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width = 15cm]{ode/metoda ode45 podpunkt:4.jpg}
 \end{figure}
+
+\section{Wnioski końcowe}
+W przypadku metod jednopunktowych stałokrokowych najlepiej wypada metoda adamsa ze względu na najniższy czas wykonania obliczeń, jednak jest ona zbierzna w wąskim przedziale kroku. Metoda RK4 ze zmiennym krokiem również bardzo dokładnie wyznacza trajektoriam jednak zdecydowanie przegrywa z metodą ode45 ze zmiennym krokiem pod względem wydajności. Przypuszczem że zastosowanie zmiennego kroku dla metody predyktor-korektor Adamsa mogło by dać najlepszy rezultat dla danych z tego zdania, ponieważ wymaga najmniejszej liczby kroków przy wysokiej dokładności. 
 
 
 \end{document}
